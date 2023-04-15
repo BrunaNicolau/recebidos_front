@@ -1,10 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EscritorioService } from 'src/app/service/escritorio.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
 
+@Injectable()
+export class LoginComponent {
+  usuario = new FormControl('', [Validators.required]);
+  senha = new FormControl('', [Validators.required]);
+  lembrar = new FormControl('');
+
+  constructor(
+    private router: Router,
+    private testeService: EscritorioService
+  ) {}
+
+  logar() {
+    console.log('criar o serviço de autenticação');
+    const req = { nome: 'bruna' };
+    // this.testeService.teste(req).subscribe({
+    //   next: (resp) => {
+    //     console.log(resp);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   },
+    // });
+    this.router.navigate(['/adm']);
+  }
 }

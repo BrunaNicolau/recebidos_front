@@ -11,6 +11,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatListModule,
+    MatGridListModule
   ]
 })
 export class AppMaterialModule { }
