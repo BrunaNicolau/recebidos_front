@@ -4,12 +4,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdmHomeComponent } from './pages/adm-home/adm-home.component';
 import { ListOfficesComponent } from './pages/list-offices/list-offices.component';
 import { NewOfficeComponent } from './pages/new-office/new-office.component';
+import { EditOfficeComponent } from './pages/edit-office/edit-office.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'adm', component: AdmHomeComponent},
   {path: 'listOffices', component: ListOfficesComponent},
   {path: 'newOffice', component: NewOfficeComponent},
+  {path: 'editOffice', component: EditOfficeComponent},
 
 ];
 

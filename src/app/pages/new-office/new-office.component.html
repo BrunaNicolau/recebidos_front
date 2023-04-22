@@ -1,1 +1,57 @@
-<p>new-office works!</p>
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    ></button>
+    <span>Cadastro de Escritorios</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+<mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+  <mat-grid-tile>
+    <p class="alingLine">
+      <mat-form-field appearance="fill">
+        <mat-label class="pesquisar">Responsavel</mat-label>
+        <input matInput value="" #message />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label class="pesquisar">Endereco</mat-label>
+        <input matInput value="" #message />
+      </mat-form-field>
+    </p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <p class="alingLine">
+      <mat-form-field appearance="fill">
+        <mat-label class="pesquisar">Contato 01</mat-label>
+        <input matInput value="" #message />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label class="pesquisar">CPF</mat-label>
+        <input matInput value="" #message />
+      </mat-form-field>
+    </p>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <p class="alingLine">
+      <mat-form-field appearance="fill">
+        <mat-label class="pesquisar">E-mail</mat-label>
+        <input matInput value="" #message />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label class="pesquisar">Data Inicio</mat-label>
+        <input matInput value="" #message />
+      </mat-form-field>
+    </p>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="example-button-row">
+  <button mat-button color="primary">Voltar</button>
+  <button mat-raised-button color="primary" (click)="confirm()">
+    Confirmar
+  </button>
+</div>

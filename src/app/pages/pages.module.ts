@@ -5,16 +5,18 @@ import { SharedModule } from '../shared/shared.module';
 import { AppMaterialModule } from '../shared/ngMaterial/ngMaterial.module';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EscritorioService } from '../service/escritorio.service';
 import { ListOfficesComponent } from './list-offices/list-offices.component';
 import { NewOfficeComponent } from './new-office/new-office.component';
+import { EditOfficeComponent } from './edit-office/edit-office.component';
+import { OfficeServices } from '../service/office-services.service';
 
 @NgModule({
   declarations: [
     AdmHomeComponent,
     LoginComponent,
     ListOfficesComponent,
-    NewOfficeComponent
+    NewOfficeComponent,
+    EditOfficeComponent
   ],
   imports: [
     CommonModule, 
@@ -23,7 +25,7 @@ import { NewOfficeComponent } from './new-office/new-office.component';
     ReactiveFormsModule
   ], 
   providers: [
-    EscritorioService
+    OfficeServices
   ]
 })
 export class PagesModule { }
