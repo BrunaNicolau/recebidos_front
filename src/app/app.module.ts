@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from '@angular/common/http';
-import { EditOfficeComponent } from './pages/edit-office/edit-office.component';
+import { EditOfficeComponent } from './pages/office/edit-office/edit-office.component';
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,7 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EscritorioService } from 'src/app/service/escritorio.service';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private testeService: EscritorioService
+    // private testeService: EscritorioService
   ) {}
 
   logar() {

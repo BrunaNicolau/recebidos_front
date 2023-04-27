@@ -10,8 +10,9 @@ import { TableOfficeModel } from 'src/app/shared/interface/table-office.model';
   styleUrls: ['./list-offices.component.scss'],
 })
 export class ListOfficesComponent implements OnInit {
-  displayedColumns = ['id', 'responsavel', 'status'];
-  dataSource: Observable <TableOfficeModel[]>;
+  displayedColumns: string[] = ['id', 'responsavel', 'status'];
+  dataTable: TableOfficeModel[] = [];
+  // dataTable: any;
 
 
   constructor(private router: Router, private OfficeServices: OfficeServices) {}
@@ -19,16 +20,17 @@ export class ListOfficesComponent implements OnInit {
   ngOnInit() {
     const req = 3;
 
-    this.dataSource = this.OfficeServices.ListOffice(req);
-    // this.OfficeServices.ListOffice(req).subscribe({
-    //   next: (res) => {
-    //     let teste: TableOfficeModel[] = res;
-    //     console.log(teste);
-    //     this.dataSource = res;
-    //   },
+    this.OfficeServices.ListOffice(req).subscribe({
+      next: (res) => {
+        let teste: TableOfficeModel[] = res;
+        console.log(teste);
+        this.dataTable = res;
 
-    //   error: (error) => {},
-    // });
+        
+      },
+
+      error: (error) => {},
+    });
   }
 
   callNewOffice() {

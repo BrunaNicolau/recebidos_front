@@ -4,22 +4,14 @@ import { map, tap } from 'rxjs';
 import { TableOfficeModel } from '../shared/interface/table-office.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OfficeServices {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(
-    private httpClient: HttpClient
-  ) { }
-
-public ListOffice(req: number) {
-  // return this.httpClient.get("/recebidos/office/officesList/" + req).pipe(
-  //     map((res: any) => res as any)
-  //   )
-
-  return this.httpClient.get<TableOfficeModel[]>("/recebidos/office/officesList/" + req).pipe(
-    tap(courses => console.log(courses))
-  )
-}
-
+  public ListOffice(req: number) {
+    return this.httpClient
+      .get('/recebidos/office/officesList/' + req)
+      .pipe(map((res: any) => res as any));
+  }
 }

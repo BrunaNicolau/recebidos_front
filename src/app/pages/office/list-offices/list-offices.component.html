@@ -13,9 +13,11 @@
         <input matInput value="" #message>
       </mat-form-field>
   </div>
+
+
   <mat-grid-list cols="1" rowHeight="600px">
     <mat-grid-tile class="table-config">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataTable" class="mat-elevation-z8">
       
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -27,21 +29,21 @@
           <td mat-cell *matCellDef="let element">{{ element.responsavel }}</td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="arrecadados">
+        <ng-container matColumnDef="arrecadados">
           <th mat-header-cell *matHeaderCellDef>Arrecadados</th>
           <td mat-cell *matCellDef="let element">{{ element.arrecadados }}</td>
-        </ng-container> -->
+        </ng-container>
 
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>Status</th>
           <td mat-cell *matCellDef="let element">{{ element.status }}</td>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="acao">
+        <ng-container matColumnDef="acao">
           <th mat-header-cell *matHeaderCellDef>teste</th>
           <td mat-cell> teste
           </td>
-        </ng-container> -->
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
