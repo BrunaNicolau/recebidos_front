@@ -49,6 +49,11 @@ export class ListOfficesComponent implements OnInit {
     });
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataTable.filter = filterValue.trim().toLowerCase();
+  }
+
   callNewOffice() {
     this.router.navigate(['/newOffice']);
   }

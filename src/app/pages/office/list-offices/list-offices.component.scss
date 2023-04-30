@@ -1,8 +1,15 @@
+.pt {
+  padding: 3em;
+}
+
 .table-config {
-  max-width: 75%;
+  max-width: 90%;
   margin: auto 10%;
 }
-.pesquisar {
-  max-width: 75%;
-  margin: auto;
+
+.button-config {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3em;
 }
