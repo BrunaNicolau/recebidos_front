@@ -9,48 +9,50 @@
     <span class="example-spacer"></span>
   </mat-toolbar>
 </p>
-<mat-grid-list cols="1" rowHeight="100px" class="alingForm">
-  <mat-grid-tile>
-    <p class="alingLine">
-      <mat-form-field appearance="fill">
-        <mat-label class="pesquisar">Responsavel</mat-label>
-        <input matInput value="" #message />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label class="pesquisar">Endereco</mat-label>
-        <input matInput value="" #message />
-      </mat-form-field>
-    </p>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <p class="alingLine">
-      <mat-form-field appearance="fill">
-        <mat-label class="pesquisar">Contato 01</mat-label>
-        <input matInput value="" #message />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label class="pesquisar">CPF</mat-label>
-        <input matInput value="" #message />
-      </mat-form-field>
-    </p>
-  </mat-grid-tile>
+<form>
+  <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Responsavel</mat-label>
+          <input matInput value="" #message />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Endereco</mat-label>
+          <input matInput value="" #message />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Contato 01</mat-label>
+          <input matInput value="" #message />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">CPF</mat-label>
+          <input matInput value="" #message />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
 
-  <mat-grid-tile>
-    <p class="alingLine">
-      <mat-form-field appearance="fill">
-        <mat-label class="pesquisar">E-mail</mat-label>
-        <input matInput value="" #message />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label class="pesquisar">Data Inicio</mat-label>
-        <input matInput value="" #message />
-      </mat-form-field>
-    </p>
-  </mat-grid-tile>
-</mat-grid-list>
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">E-mail</mat-label>
+          <input matInput value="" #message />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Data Inicio</mat-label>
+          <input matInput value="" #message />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
 
-<div class="example-button-row">
-  <button mat-button color="primary">Voltar</button>
+<div class="button-config">
+  <button mat-button color="primary" (click)="backToLastPage()">Voltar</button>
   <button mat-raised-button color="primary" (click)="confirm()">
     Confirmar
   </button>

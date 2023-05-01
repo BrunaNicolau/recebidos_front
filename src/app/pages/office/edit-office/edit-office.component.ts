@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-office',
@@ -7,8 +8,16 @@ import { Component } from '@angular/core';
 })
 export class EditOfficeComponent {
 
+  constructor(private router: Router){
+
+  }
+
   confirm(){
-    //TODO: chamra servicos
+    //TODO: chamar servicos
+  }
+
+  backToLastPage() {
+    this.router.navigate(['/listOffices']);
   }
 }
 

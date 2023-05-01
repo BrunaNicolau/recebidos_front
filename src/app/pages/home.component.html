@@ -12,19 +12,28 @@
       </div>
 
       <div>
-        <h3>Gestão</h3>
+        <div mat-subheader>Gestão</div>
         <mat-list>
           <mat-list-item (click)="officesService()">
+            <mat-icon matListItemIcon>group</mat-icon>
             <span matListItemTitle>Escritorio</span>
           </mat-list-item>
-          <mat-list-item>Also the title</mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>receipt</mat-icon>
+            <span matListItemTitle>Recibo</span>
+          </mat-list-item>
         </mat-list>
-        <h3>Emissão</h3>
+        <mat-divider></mat-divider>
+        <div mat-subheader>Emissão</div>
         <mat-list>
           <mat-list-item>
-            <span matListItemTitle>This is the title</span>
+            <mat-icon matListItemIcon>receipt</mat-icon>
+            <span matListItemTitle>Emissao Recibo</span>
           </mat-list-item>
-          <mat-list-item>Also the title</mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>receipt</mat-icon>
+            <span matListItemTitle>Baixa Recibo</span>
+          </mat-list-item>
         </mat-list>
       </div>
     </mat-sidenav>

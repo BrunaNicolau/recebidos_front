@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adm-home',
-  templateUrl: './adm-home.component.html',
-  styleUrls: ['./adm-home.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AdmHomeComponent {
+export class HomeComponent {
   options = this._formBuilder.group({
     bottom: 0,
     fixed: true,
@@ -21,7 +21,6 @@ export class AdmHomeComponent {
 
 
   officesService(){
-    console.log('criar a chamada de servico lisyagem escritorio');
     this.router.navigate(['/listOffices']);
   }
 
