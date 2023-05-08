@@ -9,29 +9,29 @@
     <span class="example-spacer"></span>
   </mat-toolbar>
 </p>
-<form>
+<form [formGroup]="newOfficeForm">
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Responsavel</mat-label>
-          <input matInput value="" #message />
+          <input matInput formControlName="owner" #message />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Endereco</mat-label>
-          <input matInput value="" #message />
+          <input matInput formControlName="address" #message />
         </mat-form-field>
       </p>
     </mat-grid-tile>
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Contato 01</mat-label>
-          <input matInput value="" #message />
+          <mat-label class="pesquisar">Contato</mat-label>
+          <input matInput formControlName="telephone" #message />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">CPF</mat-label>
-          <input matInput value="" #message />
+          <input matInput formControlName="document" #message />
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -40,11 +40,11 @@
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">E-mail</mat-label>
-          <input matInput value="" #message />
+          <input matInput formControlName="email" #message />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Data Inicio</mat-label>
-          <input matInput value="" #message />
+          <input matInput formControlName="startDate" #message />
         </mat-form-field>
       </p>
     </mat-grid-tile>

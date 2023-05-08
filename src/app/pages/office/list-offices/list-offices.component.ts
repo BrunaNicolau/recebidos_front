@@ -27,12 +27,13 @@ export class ListOfficesComponent implements OnInit {
     const req = 3;
     this.OfficeServices.ListOffices(req).subscribe({
       next: (res) => {
+        console.log(res);
         this.dataTable = new MatTableDataSource<TableOfficeModel>(res);
         this.dataTable.paginator = this.paginator;
       },
       error: (error) => {
         this.snackBar.open('Erro ao pesquisar escritorio.', '', { duration: 5000 });
-      },
+      }
     });
   }
 
