@@ -16,7 +16,11 @@ export class ListOfficesComponent implements OnInit {
   dataTable: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private router: Router, private OfficeServices: OfficeServices, private snackBar: MatSnackBar ) {}
+  constructor(
+    private router: Router,
+    private OfficeServices: OfficeServices,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.callTableDataService();
@@ -27,13 +31,20 @@ export class ListOfficesComponent implements OnInit {
     const req = 3;
     this.OfficeServices.ListOffices(req).subscribe({
       next: (res) => {
-        console.log(res);
-        this.dataTable = new MatTableDataSource<TableOfficeModel>(res);
-        this.dataTable.paginator = this.paginator;
+        if (!res) {
+          this.snackBar.open('Erro ao pesquisar escritorio.', '', {
+            duration: 5000,
+          });
+        } else {
+          this.dataTable = new MatTableDataSource<TableOfficeModel>(res);
+          this.dataTable.paginator = this.paginator;
+        }
       },
       error: (error) => {
-        this.snackBar.open('Erro ao pesquisar escritorio.', '', { duration: 5000 });
-      }
+        this.snackBar.open(error.message, '', {
+          duration: 5000,
+        });
+      },
     });
   }
 

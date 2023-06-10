@@ -30,7 +30,7 @@ import { HomeComponent } from './home.component';
     CommonModule, 
     SharedModule,
     AppMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule    
   ], 
   providers: [
     OfficeServices

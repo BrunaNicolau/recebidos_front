@@ -9,29 +9,66 @@
     <span class="example-spacer"></span>
   </mat-toolbar>
 </p>
+<!-- TODO: alinhar no centro da tela  -->
 <form [formGroup]="newOfficeForm">
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Responsavel</mat-label>
-          <input matInput formControlName="owner" #message />
+          <input matInput formControlName="owner" />
+          <mat-error
+            *ngIf="newOfficeForm.controls['owner'].hasError('required')"
+          >
+            O responsavel é obrigatório
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Endereco</mat-label>
-          <input matInput formControlName="address" #message />
+          <input matInput formControlName="address" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">CEP</mat-label>
+          <input matInput formControlName="zipCode" (input)="maskCEP($event)" maxlength="9"/>
         </mat-form-field>
       </p>
     </mat-grid-tile>
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Contato</mat-label>
-          <input matInput formControlName="telephone" #message />
+          <mat-label class="pesquisar">Telefone</mat-label>
+          <input
+            type="tel"
+            matInput
+            formControlName="telephone"
+            maxlength="9"
+          />
+          <mat-error
+            *ngIf="newOfficeForm.controls['email'].hasError('required')"
+          >
+            O telefone é obrigatório
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">E-mail</mat-label>
+          <input type="email" matInput formControlName="email" />
+          <mat-error
+            *ngIf="
+              newOfficeForm.controls['email'].hasError('email') &&
+              !newOfficeForm.controls['email'].hasError('required')
+            "
+          >
+            Por favor insira um endereço de e-mail válido
+          </mat-error>
+          <mat-error
+            *ngIf="newOfficeForm.controls['email'].hasError('required')"
+          >
+            O e-mail é obrigatório
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">CPF</mat-label>
-          <input matInput formControlName="document" #message />
+          <input matInput formControlName="document" />
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -39,12 +76,8 @@
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">E-mail</mat-label>
-          <input matInput formControlName="email" #message />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Data Inicio</mat-label>
-          <input matInput formControlName="startDate" #message />
+          <input matInput formControlName="startDate" />
         </mat-form-field>
       </p>
     </mat-grid-tile>
