@@ -10,15 +10,15 @@
   </mat-toolbar>
 </p>
 <!-- TODO: alinhar no centro da tela  -->
-<form [formGroup]="newOfficeForm">
+<form [formGroup]="newOfficeForm" (ngSubmit)="confirm(newOfficeForm.value)">
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Responsavel</mat-label>
-          <input matInput formControlName="owner" />
+          <input matInput formControlName="responsible" />
           <mat-error
-            *ngIf="newOfficeForm.controls['owner'].hasError('required')"
+            *ngIf="newOfficeForm.controls['responsible'].hasError('required')"
           >
             O responsavel é obrigatório
           </mat-error>
@@ -29,7 +29,25 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">CEP</mat-label>
-          <input matInput formControlName="zipCode" (input)="maskCEP($event)" maxlength="9"/>
+          <input
+            matInput
+            formControlName="zipCode"
+            maxlength="9"
+            mask="00000-000"
+          />
+          <mat-error
+            *ngIf="newOfficeForm.controls['zipCode'].hasError('required')"
+          >
+            O CEP é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="
+              newOfficeForm.controls['zipCode'].value.length < 9 &&
+              !newOfficeForm.controls['zipCode'].hasError('required')
+            "
+          >
+            Por favor insira um CEP válido
+          </mat-error>
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -41,12 +59,21 @@
             type="tel"
             matInput
             formControlName="telephone"
-            maxlength="9"
+            mask="(00) 0000-0000 || (00) 00000-0000"
+            maxlength="16"
           />
           <mat-error
-            *ngIf="newOfficeForm.controls['email'].hasError('required')"
+            *ngIf="newOfficeForm.controls['telephone'].hasError('required')"
           >
             O telefone é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="
+              newOfficeForm.controls['telephone'].value.length < 13 &&
+              !newOfficeForm.controls['telephone'].hasError('required')
+            "
+          >
+            Por favor insira um Telefone válido
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
@@ -67,8 +94,26 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">CPF</mat-label>
-          <input matInput formControlName="document" />
+          <mat-label class="pesquisar">Documento(CPF/CNPJ)</mat-label>
+          <input
+            matInput
+            formControlName="document"
+            maxlength="20"
+            mask="000.000.000-00 || 000.000.000/0000-00"
+          />
+          <mat-error
+            *ngIf="newOfficeForm.controls['document'].hasError('required')"
+          >
+            O documento é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="
+              newOfficeForm.controls['document'].value.length < 14 &&
+              !newOfficeForm.controls['document'].hasError('required')
+            "
+          >
+            Por favor insira um documento válido
+          </mat-error>
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -77,16 +122,28 @@
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Data Inicio</mat-label>
-          <input matInput formControlName="startDate" />
+          <input
+            matInput
+            formControlName="startDate"
+            maxlength="10"
+            mask="00/00/0000"
+          />
         </mat-form-field>
       </p>
     </mat-grid-tile>
   </mat-grid-list>
-</form>
 
-<div class="button-config">
-  <button mat-button color="primary" (click)="backToLastPage()">Voltar</button>
-  <button mat-raised-button color="primary" (click)="confirm()">
-    Confirmar
-  </button>
-</div>
+  <div class="button-config">
+    <button mat-button color="primary" (click)="backToLastPage()">
+      Voltar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!newOfficeForm.valid"
+    >
+      Confirmar
+    </button>
+  </div>
+</form>

@@ -1,7 +1,7 @@
 export interface newOfficeRequest {
     institutionId: number;
     responsible: string;
-    adress: string;
+    address: string;
     zipCode: number;
     telephone: number;
     document: number;

@@ -13,6 +13,7 @@ import { EditReceiptComponent } from './receipt/edit-receipt/edit-receipt.compon
 import { NewReceiptComponent } from './receipt/new-receipt/new-receipt.component';
 import { UpdateReceiptComponent } from './receipt/update-receipt/update-receipt.component';
 import { HomeComponent } from './home.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HomeComponent } from './home.component';
     CommonModule, 
     SharedModule,
     AppMaterialModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule,    
+    NgxMaskModule.forRoot()
   ], 
   providers: [
     OfficeServices
