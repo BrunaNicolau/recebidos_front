@@ -1,19 +1,26 @@
 .pesquisar {
-    max-width: 75%;
-    margin: auto;
-  }
-  
-  mat-form-field{
-    width: 300px;
-  }
-  
-  .alingForm{
-    max-width: 75%;
-    margin: auto 10%;
-  }
-  
-  .alingLine{
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-  }
+  max-width: 75%;
+  margin: auto;
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+.alingForm {
+  max-width: 75%;
+  margin: auto 10%;
+}
+
+.alingLine {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-config {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3em;
+}

@@ -1,74 +1,165 @@
 <p>
-    <mat-toolbar color="primary">
-      <button
-        mat-icon-button
-        class="example-icon"
-        aria-label="Example icon-button with menu icon">
-    </button>
-      <span>Editar de Escritorios</span>
-      <span class="example-spacer"></span>
-    </mat-toolbar>
-  </p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    ></button>
+    <span>Editar de Escritorios</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+
+<form [formGroup]="editOfficeForm" (ngSubmit)="confirm()">
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
+        <!-- TODO: tem q estar desabilitado -->
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Nome Completo</mat-label>
-          <input matInput value="" #message />
+          <mat-label class="pesquisar">ID</mat-label>
+          <input matInput formControlName="id"/>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Endereco</mat-label>
-          <input matInput value="" #message />
+          <mat-label class="pesquisar">Responsavel</mat-label>
+          <input matInput formControlName="responsible" />
+          <mat-error
+            *ngIf="editOfficeForm.controls['responsible'].hasError('required')"
+          >
+            O responsavel é obrigatório
+          </mat-error>
         </mat-form-field>
-      </p>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <p class="alingLine">
+
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Telefone</mat-label>
-          <input matInput value="" #message />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">CPF</mat-label>
-          <input matInput value="" #message />
+          <input
+            type="tel"
+            matInput
+            formControlName="telephone"
+            mask="(00) 0000-0000 || (00) 00000-0000"
+            maxlength="16"
+          />
+          <mat-error
+            *ngIf="editOfficeForm.controls['telephone'].hasError('required')"
+          >
+            O telefone é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="
+              editOfficeForm.controls['telephone'].value.length < 13 &&
+              !editOfficeForm.controls['telephone'].hasError('required')
+            "
+          >
+            Por favor insira um Telefone válido
+          </mat-error>
         </mat-form-field>
       </p>
     </mat-grid-tile>
+
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Endereco</mat-label>
+          <input matInput formControlName="address" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">CEP</mat-label>
+          <input
+            matInput
+            formControlName="zipCode"
+            maxlength="9"
+            mask="00000-000"
+          />
+          <mat-error
+            *ngIf="editOfficeForm.controls['zipCode'].hasError('required')"
+          >
+            O CEP é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="
+              editOfficeForm.controls['zipCode'].value.length < 9 &&
+              !editOfficeForm.controls['zipCode'].hasError('required')
+            "
+          >
+            Por favor insira um CEP válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
           <mat-label class="pesquisar">E-mail</mat-label>
-          <input matInput value="" #message />
+          <input type="email" matInput formControlName="email" />
+          <mat-error
+            *ngIf="
+              editOfficeForm.controls['email'].hasError('email') &&
+              !editOfficeForm.controls['email'].hasError('required')
+            "
+          >
+            Por favor insira um endereço de e-mail válido
+          </mat-error>
+          <mat-error
+            *ngIf="editOfficeForm.controls['email'].hasError('required')"
+          >
+            O e-mail é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Documento(CPF/CNPJ)</mat-label>
+          <input
+            matInput
+            formControlName="document"
+            maxlength="20"
+            mask="000.000.000-00 || 000.000.000/0000-00"
+          />
+          <mat-error
+            *ngIf="editOfficeForm.controls['document'].hasError('required')"
+          >
+            O documento é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="
+              editOfficeForm.controls['document'].value.length < 14 &&
+              !editOfficeForm.controls['document'].hasError('required')
+            "
+          >
+            Por favor insira um documento válido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label class="pesquisar">Situação</mat-label>
+          <input matInput formControlName="status" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Data Inicio</mat-label>
-          <input matInput value="" #message />
+          <input matInput formControlName="startDate" />
         </mat-form-field>
       </p>
     </mat-grid-tile>
+
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">E-mail</mat-label>
-          <input matInput value="" #message />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Data Inicio</mat-label>
-          <input matInput value="" #message />
-        </mat-form-field>
-      </p>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <p class="alingLine">
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">E-mail</mat-label>
-          <input matInput value="" #message />
+          <mat-label class="pesquisar">Data Fim</mat-label>
+          <input matInput formControlName="endDate" />
         </mat-form-field>
       </p>
     </mat-grid-tile>
   </mat-grid-list>
-  
-  <div class="example-button-row">
-    <button mat-button color="primary" (click)="backToLastPage()">Voltar</button>
-    <button mat-raised-button color="primary" (click)="confirm()">Confirmar </button>
+
+  <div class="button-config">
+    <button mat-button color="primary" (click)="backToLastPage()">
+      Voltar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!editOfficeForm.valid"
+    >
+      Confirmar
+    </button>
   </div>
+</form>
