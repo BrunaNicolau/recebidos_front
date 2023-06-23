@@ -17,7 +17,7 @@
         <!-- TODO: tem q estar desabilitado -->
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">ID</mat-label>
-          <input matInput formControlName="id"/>
+          <input matInput formControlName="id" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Responsavel</mat-label>
@@ -38,7 +38,7 @@
             mask="(00) 0000-0000 || (00) 00000-0000"
             maxlength="16"
           />
-          <mat-error
+          <!-- <mat-error
             *ngIf="editOfficeForm.controls['telephone'].hasError('required')"
           >
             O telefone é obrigatório
@@ -50,7 +50,7 @@
             "
           >
             Por favor insira um Telefone válido
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -69,7 +69,7 @@
             maxlength="9"
             mask="00000-000"
           />
-          <mat-error
+          <!-- <mat-error
             *ngIf="editOfficeForm.controls['zipCode'].hasError('required')"
           >
             O CEP é obrigatório
@@ -81,7 +81,7 @@
             "
           >
             Por favor insira um CEP válido
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -153,13 +153,6 @@
     <button mat-button color="primary" (click)="backToLastPage()">
       Voltar
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="!editOfficeForm.valid"
-    >
-      Confirmar
-    </button>
+    <button mat-raised-button color="primary" type="submit">Confirmar</button>
   </div>
 </form>

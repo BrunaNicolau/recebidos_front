@@ -30,7 +30,7 @@ export class OfficeServices {
 
   public editOffice(req: any) {
     return this.httpClient
-      .post('/recebidos/office/editOffice', req)
+      .put('/recebidos/office/editOffice', req)
       .pipe(map((res: any) => res as any));
   }
 }
