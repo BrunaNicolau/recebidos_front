@@ -46,7 +46,7 @@ export class EditOfficeComponent implements OnInit {
   }
 
   serviceRescueOfficeData() {
-    const req = 3;
+    const req = 33;
     this.officeService.getOffice(req).subscribe({
       next: (res) => {
         this.officeRes = res;
@@ -64,7 +64,6 @@ export class EditOfficeComponent implements OnInit {
         this.editOfficeForm.get('telephone')?.setValue(this.officeRes.telefone);
         this.editOfficeForm.get('address')?.setValue(this.officeRes.endereco);
         this.editOfficeForm.get('zipCode')?.setValue(this.officeRes.cep);
-        // TODO: servico nao res com email
         this.editOfficeForm.get('email')?.setValue(this.officeRes.email);
         this.editOfficeForm.get('document')?.setValue(this.officeRes.documento);
         this.editOfficeForm.get('status')?.setValue(this.officeRes.status);
@@ -90,6 +89,8 @@ export class EditOfficeComponent implements OnInit {
     this.reqEdit.telephone =
       formData.telephone != null ? formData.telephone : 0;
     this.reqEdit.endDate = formData.endDate != null ? formData.endDate : '';
+    this.reqEdit.email = formData.email != null ? formData.email : '';
+
     this.officeService.editOffice(this.reqEdit).subscribe({
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });

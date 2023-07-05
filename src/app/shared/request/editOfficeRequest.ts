@@ -7,4 +7,5 @@ export interface editOfficeRequest {
   officeId?: number;
   telephone?: number;
   endDate?: string;
+  email?: string;
 }
