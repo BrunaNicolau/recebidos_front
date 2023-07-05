@@ -39,7 +39,7 @@ export class NewOfficeComponent implements OnInit {
 
   confirm(form: newOfficeRequest) {
     // TODO: solucao temporaria
-    let req = form;
+    const req = form;
     req.institutionId = 1;
 
     this.OfficeServices.newOffice(req).subscribe({

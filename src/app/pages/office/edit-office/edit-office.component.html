@@ -10,7 +10,7 @@
   </mat-toolbar>
 </p>
 
-<form [formGroup]="editOfficeForm" (ngSubmit)="confirm()">
+<form [formGroup]="editOfficeForm" (ngSubmit)="confirm(editOfficeForm.value)">
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
@@ -38,7 +38,7 @@
             mask="(00) 0000-0000 || (00) 00000-0000"
             maxlength="16"
           />
-          <!-- <mat-error
+          <mat-error
             *ngIf="editOfficeForm.controls['telephone'].hasError('required')"
           >
             O telefone é obrigatório
@@ -50,7 +50,7 @@
             "
           >
             Por favor insira um Telefone válido
-          </mat-error> -->
+          </mat-error>
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -69,7 +69,7 @@
             maxlength="9"
             mask="00000-000"
           />
-          <!-- <mat-error
+          <mat-error
             *ngIf="editOfficeForm.controls['zipCode'].hasError('required')"
           >
             O CEP é obrigatório
@@ -81,7 +81,7 @@
             "
           >
             Por favor insira um CEP válido
-          </mat-error> -->
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -128,9 +128,12 @@
             Por favor insira um documento válido
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Situação</mat-label>
-          <input matInput formControlName="status" />
+        <mat-form-field>
+          <mat-label>Situação</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="ativo">Ativo</mat-option>
+            <mat-option value="inativo">Inativo</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Data Inicio</mat-label>
@@ -153,6 +156,13 @@
     <button mat-button color="primary" (click)="backToLastPage()">
       Voltar
     </button>
-    <button mat-raised-button color="primary" type="submit">Confirmar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!editOfficeForm.valid"
+    >
+      Confirmar
+    </button>
   </div>
 </form>

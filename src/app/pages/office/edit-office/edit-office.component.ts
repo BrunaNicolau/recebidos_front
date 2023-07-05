@@ -14,6 +14,8 @@ import { getOfficeDataResponse } from 'src/app/shared/response/getOfficeDataResp
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;
   officeRes: getOfficeDataResponse;
+  // TODO: corrigir essa inicializacao
+  reqEdit: editOfficeRequest = {};
 
   constructor(
     private router: Router,
@@ -48,13 +50,13 @@ export class EditOfficeComponent implements OnInit {
     this.officeService.getOffice(req).subscribe({
       next: (res) => {
         this.officeRes = res;
+        // TODO: mover para outra funcao
         const configEndDate = new Date(
           this.officeRes.inicio
         ).toLocaleDateString();
         const configStartDate = new Date(
           this.officeRes.fim
         ).toLocaleDateString();
-
         this.editOfficeForm.get('id')?.setValue(this.officeRes.id);
         this.editOfficeForm
           .get('responsible')
@@ -62,11 +64,12 @@ export class EditOfficeComponent implements OnInit {
         this.editOfficeForm.get('telephone')?.setValue(this.officeRes.telefone);
         this.editOfficeForm.get('address')?.setValue(this.officeRes.endereco);
         this.editOfficeForm.get('zipCode')?.setValue(this.officeRes.cep);
+        // TODO: servico nao res com email
         this.editOfficeForm.get('email')?.setValue(this.officeRes.email);
         this.editOfficeForm.get('document')?.setValue(this.officeRes.documento);
         this.editOfficeForm.get('status')?.setValue(this.officeRes.status);
         this.editOfficeForm.get('startDate')?.setValue(configEndDate);
-        this.editOfficeForm.get('startDate')?.setValue(configStartDate);
+        this.editOfficeForm.get('endDate')?.setValue(configStartDate);
       },
       error: (error) => {
         this.snackBar.open(error.message, '', { duration: 5000 });
@@ -74,13 +77,22 @@ export class EditOfficeComponent implements OnInit {
     });
   }
 
-  confirm() {
-    //TODO: montar essa req direito, modelo no postman
-    const reqEdit: editOfficeRequest = {...this.editOfficeForm.getRawValue()}
-    console.log(reqEdit)
-    this.officeService.editOffice(reqEdit).subscribe({
+  confirm(form: any) {
+    // TODO: mover para outra funcao
+    const formData = form;
+    this.reqEdit.responsible =
+      formData.responsible != null ? formData.responsible : '';
+    this.reqEdit.document = formData.document != null ? formData.document : 0;
+    this.reqEdit.address = formData.address != null ? formData.address : '';
+    this.reqEdit.zipCode = formData.zipCode != null ? formData.zipCode : 0;
+    this.reqEdit.status = formData.status != null ? formData.status : '';
+    this.reqEdit.officeId = formData.id != null ? formData.id : 0;
+    this.reqEdit.telephone =
+      formData.telephone != null ? formData.telephone : 0;
+    this.reqEdit.endDate = formData.endDate != null ? formData.endDate : '';
+    this.officeService.editOffice(this.reqEdit).subscribe({
       next: (res) => {
-        console.log(res);
+        this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
       },
       error: (error) => {
         this.snackBar.open(error.message, '', { duration: 5000 });
