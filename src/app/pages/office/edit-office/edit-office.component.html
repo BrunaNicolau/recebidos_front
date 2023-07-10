@@ -14,10 +14,9 @@
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
-        <!-- TODO: tem q estar desabilitado -->
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">ID</mat-label>
-          <input matInput formControlName="id" />
+          <input matInput  formControlName="id"/>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Responsavel</mat-label>
@@ -130,7 +129,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Situação</mat-label>
-          <mat-select formControlName="status">
+          <mat-select formControlName="status" (ngModelChange)="checkStatus(this.editOfficeForm.get('status')?.value)">
             <mat-option value="ativo">Ativo</mat-option>
             <mat-option value="inativo">Inativo</mat-option>
           </mat-select>

@@ -6,6 +6,6 @@ export interface editOfficeRequest {
   status?: string;
   officeId?: number;
   telephone?: number;
-  endDate?: string;
+  endDate?: any;
   email?: string;
 }
