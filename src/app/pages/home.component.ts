@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-adm-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   options = this._formBuilder.group({
@@ -14,14 +14,13 @@ export class HomeComponent {
     top: 0,
   });
 
-  constructor(
-    private _formBuilder: FormBuilder,
-    private router: Router,
-  ){}
+  constructor(private _formBuilder: FormBuilder, private router: Router) {}
 
-
-  officesService(){
+  officesSession() {
     this.router.navigate(['/listOffices']);
   }
 
+  receiptSession() {
+    this.router.navigate(['/listReceipt']);
+  }
 }

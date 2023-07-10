@@ -16,6 +16,7 @@ export class ListOfficesComponent implements OnInit {
   dataTable: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
   constructor(
     private router: Router,
     private OfficeServices: OfficeServices,
