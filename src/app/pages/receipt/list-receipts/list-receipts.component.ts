@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TableReceitModel } from 'src/app/shared/interface/table-receipt.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { ReceiptServiceService } from 'src/app/service/receipt-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-receipts',
@@ -15,11 +16,11 @@ export class ListReceiptsComponent implements OnInit {
 
   displayedColumns = ['id', 'responsavel', 'valor', 'status', 'acao'];
   dataTable: any;
-  res: any;
 
   constructor(
     private router: Router,
-    private receiptServices: ReceiptServiceService
+    private receiptServices: ReceiptServiceService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -27,23 +28,17 @@ export class ListReceiptsComponent implements OnInit {
   }
 
   tableDataService() {
-    //TODO: montar chamada de servico
     const req = 1;
     this.receiptServices.ListReceipts(req).subscribe({
       next: (res) => {
-        console.log(res);
+        this.dataTable = new MatTableDataSource<TableReceitModel>(res);
       },
       error: (error) => {
-        console.log(error);
+        this.snackBar.open(error.message, '', {
+          duration: 5000,
+        });
       },
     });
-
-    this.res = [
-      { id: 1, responsavel: 'teste', valor: 15, status: 'teste' },
-      { id: 2, responsavel: 'teste', valor: 15, status: 'teste' },
-      { id: 3, responsavel: 'teste', valor: 15, status: 'teste' },
-    ];
-    this.dataTable = new MatTableDataSource<TableReceitModel>(this.res);
   }
 
   applyFilter(event: Event) {
@@ -51,12 +46,15 @@ export class ListReceiptsComponent implements OnInit {
     this.dataTable.filter = filterValue.trim().toLowerCase();
   }
 
+  callEditReceipt() {
+    this.router.navigate(['/editReceipt']);
+  }
+
   backToLastPage() {
     this.router.navigate(['/adm']);
   }
 
   createNewReceipt() {
-    // TODO: por a rota
-    // this.router.navigate(['/adm']);
+    this.router.navigate(['/newReceipt']);
   }
 }

@@ -1,6 +1,6 @@
 export interface TableOfficeModel {
   id: number;
-  responsavel: string;
+  responsavel: any;
   status: string;
   acao?: any;
 }
