@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OfficeServices } from 'src/app/service/office-services.service';
 import { editOfficeRequest } from 'src/app/shared/request/editOfficeRequest';
-import { getOfficeDataResponse } from 'src/app/shared/response/getOfficeDataResponse';
+import { officeDataResponse } from 'src/app/shared/response/officeDataResponse';
 
 @Component({
   selector: 'app-edit-office',
@@ -13,7 +13,7 @@ import { getOfficeDataResponse } from 'src/app/shared/response/getOfficeDataResp
 })
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;
-  officeRes: getOfficeDataResponse;
+  officeRes: officeDataResponse;
   reqEdit: editOfficeRequest = {};
 
   constructor(
@@ -44,6 +44,7 @@ export class EditOfficeComponent implements OnInit {
   }
 
   serviceGetOfficeData() {
+    //TODO: ajustar requisicoes 
     const req = 33;
     this.officeService.getOffice(req).subscribe({
       next: (res) => {
@@ -52,7 +53,7 @@ export class EditOfficeComponent implements OnInit {
       },
       error: (error) => {
         this.snackBar.open(error.message, '', { duration: 5000 });
-      },
+      }
     });
   }
 

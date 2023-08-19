@@ -1,4 +1,4 @@
-export interface getOfficeDataResponse {
+export interface officeDataResponse {
     // TODO: mudar para ingles
     // TODO: mudar os tipos
     cep: number;

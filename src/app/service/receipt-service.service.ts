@@ -13,4 +13,24 @@ export class ReceiptServiceService {
       .get('/recebidos/receipt/listReceipts/' + req)
       .pipe(map((res: any) => res as any));
   }
+
+  public receiptById(req: number) {
+    return this.httpClient
+      .get('/recebidos/receipt/receiptById/' + req)
+      .pipe(map((res: any) => res as any));
+  }
+
+  //TODO: mudar o tipo
+  public newReceipt(req: any) {
+    return this.httpClient
+      .post('/recebidos/receipt/createReceipts', req)
+      .pipe(map((res: any) => res as any));
+  }
+
+  public editReceipt(req: any) {
+    return this.httpClient
+      .put('/recebidos/receipt/editReceipt', req)
+      .pipe(map((res: any) => res as any));
+  }
+
 }

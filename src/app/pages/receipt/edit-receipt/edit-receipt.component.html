@@ -10,6 +10,69 @@
   </mat-toolbar>
 </p>
 
-<form [formGroup]="editReceiptForm">
+<form [formGroup]="editReceiptForm" (ngSubmit)="confirm(editReceiptForm.value)">
+  <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Codigo do Recibo</mat-label>
+          <input matInput formControlName="receiptID" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Escritorio</mat-label>
+          <input matInput formControlName="office" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
 
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de pagamento</mat-label>
+          <input matInput formControlName="typePayment" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <input matInput formControlName="status" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Data Emissao</mat-label>
+          <input matInput formControlName="startDate" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Data de recebimento</mat-label>
+          <input matInput formControlName="receiveDate" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Valor</mat-label>
+          <input matInput formControlName="value" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+  <div class="button-config">
+    <button mat-button color="primary" (click)="backToLastPage()">
+      Voltar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!editReceiptForm.valid"
+    >
+      Confirmar
+    </button>
+  </div>
 </form>

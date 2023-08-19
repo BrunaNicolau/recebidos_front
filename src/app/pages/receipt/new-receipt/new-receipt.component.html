@@ -1,1 +1,45 @@
-<p>new-receipt works!</p>
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    ></button>
+    <span>Editar Recibos</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+
+<form [formGroup]="newReceiptForm" (ngSubmit)="confirm(newReceiptForm.value)">
+  <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Instituicao</mat-label>
+          <input matInput formControlName="receiptID" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Escritorio</mat-label>
+          <input matInput formControlName="office" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de pagamento</mat-label>
+          <input matInput formControlName="typePayment" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Valor</mat-label>
+          <input matInput formControlName="value" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="button-config">
+    <button mat-button color="primary">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit">Confirmar</button>
+  </div>
+</form>
