@@ -24,20 +24,17 @@
           </mat-list-item>
         </mat-list>
         <mat-divider></mat-divider>
+
         <div mat-subheader>Operações</div>
         <mat-list>
-          <mat-list-item>
+          <mat-list-item (click)="newReceiptSession()">
             <mat-icon matListItemIcon>receipt</mat-icon>
             <span matListItemTitle>Emissão Recibo</span>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon matListItemIcon>timeline</mat-icon>
-            <span matListItemTitle>Baixa Recibo</span>
           </mat-list-item>
         </mat-list>
       </div>
     </mat-sidenav>
 
-    <mat-sidenav-content> oq eu faço com isso </mat-sidenav-content>
+    <mat-sidenav-content> Montar DashBoard </mat-sidenav-content>
   </mat-sidenav-container>
 </ng-container>

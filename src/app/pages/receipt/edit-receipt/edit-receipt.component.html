@@ -18,6 +18,7 @@
           <mat-label>Codigo do Recibo</mat-label>
           <input matInput formControlName="receiptID" />
         </mat-form-field>
+        <!-- TODO: criar um dropdown que chama um servico com os nomes do escritorio -->
         <mat-form-field appearance="fill">
           <mat-label>Escritorio</mat-label>
           <input matInput formControlName="office" />
@@ -27,26 +28,54 @@
 
     <mat-grid-tile>
       <p class="alingLine">
-        <mat-form-field appearance="fill">
-          <mat-label>Tipo de pagamento</mat-label>
-          <input matInput formControlName="typePayment" />
+        <mat-form-field>
+          <mat-label>Metodo de Pagamento</mat-label>
+          <mat-select formControlName="typePayment">
+            <mat-option value="C">Cartão</mat-option>
+            <mat-option value="D">Dinheiro</mat-option>
+            <mat-option value="T">Transferencia</mat-option>
+            <mat-option value="P">Pix</mat-option>
+            <mat-option value="O">Outros</mat-option>
+          </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
           <mat-label>Status</mat-label>
-          <input matInput formControlName="status" />
+          <mat-select formControlName="status">
+            <mat-option value="E">Emitido</mat-option>
+            <mat-option value="R">Recebido</mat-option>
+            <mat-option value="C">Cancelado</mat-option>
+          </mat-select>
         </mat-form-field>
       </p>
     </mat-grid-tile>
 
     <mat-grid-tile>
       <p class="alingLine">
-        <mat-form-field appearance="fill">
-          <mat-label>Data Emissao</mat-label>
-          <input matInput formControlName="startDate" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
           <mat-label>Data de recebimento</mat-label>
-          <input matInput formControlName="receiveDate" />
+          <input
+            matInput
+            [matDatepicker]="pickerStartDate"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerStartDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerStartDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Data de recebimento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerReceiveDate"
+            formControlName="receiveDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerReceiveDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerReceiveDate></mat-datepicker>
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -59,8 +88,6 @@
         </mat-form-field>
       </p>
     </mat-grid-tile>
-
-
   </mat-grid-list>
   <div class="button-config">
     <button mat-button color="primary" (click)="backToLastPage()">

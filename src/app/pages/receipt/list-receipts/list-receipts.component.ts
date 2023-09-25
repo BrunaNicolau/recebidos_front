@@ -51,7 +51,7 @@ export class ListReceiptsComponent implements OnInit {
   }
 
   backToLastPage() {
-    this.router.navigate(['/adm']);
+    history.back();
   }
 
   createNewReceipt() {

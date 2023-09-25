@@ -16,7 +16,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   exports: [
     MatTableModule,
@@ -37,7 +38,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSidenavModule,
     MatListModule,
     MatGridListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ],
 })
 export class AppMaterialModule {}

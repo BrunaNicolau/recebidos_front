@@ -16,7 +16,7 @@
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">ID</mat-label>
-          <input matInput  formControlName="id"/>
+          <input matInput formControlName="id" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label class="pesquisar">Responsavel</mat-label>
@@ -129,23 +129,46 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Situação</mat-label>
-          <mat-select formControlName="status" (ngModelChange)="checkStatus(this.editOfficeForm.get('status')?.value)">
+          <mat-select
+            formControlName="status"
+            (ngModelChange)="
+              checkStatus(this.editOfficeForm.get('status')?.value)
+            "
+          >
             <mat-option value="ativo">Ativo</mat-option>
             <mat-option value="inativo">Inativo</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Data Inicio</mat-label>
-          <input matInput formControlName="startDate" />
+        <mat-form-field>
+          <mat-label>Data de recebimento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerStartDate"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerStartDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerStartDate></mat-datepicker>
         </mat-form-field>
       </p>
     </mat-grid-tile>
 
     <mat-grid-tile>
       <p class="alingLine">
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Data Fim</mat-label>
-          <input matInput formControlName="endDate" />
+        <mat-form-field>
+          <mat-label>Data Fim</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerEndDate"
+            formControlName="endDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerEndDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerEndDate></mat-datepicker>
         </mat-form-field>
       </p>
     </mat-grid-tile>

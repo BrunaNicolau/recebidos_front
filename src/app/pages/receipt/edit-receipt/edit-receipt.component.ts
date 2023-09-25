@@ -27,13 +27,13 @@ export class EditReceiptComponent implements OnInit {
 
   initForm() {
     this.editReceiptForm = this.fb.group({
-      receiptID: ['', [Validators.required]],
+      receiptID: [{ value: '', disabled: true }],
       office: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
+      startDate: [{ value: '', disabled: true }],
       receiveDate: [''],
       typePayment: [''],
       value: ['', [Validators.required]],
-      status: ['', [Validators.required]]
+      status: ['', [Validators.required]],
     });
     this.serviceGetReceiptData();
   }
@@ -42,7 +42,6 @@ export class EditReceiptComponent implements OnInit {
     const req = 1;
     this.receiptService.receiptById(req).subscribe({
       next: (res) => {
-        console.log(res);
         this.configInput(res);
       },
       error: (error) => {
@@ -52,22 +51,14 @@ export class EditReceiptComponent implements OnInit {
   }
 
   configInput(res: receiptDataResponse) {
-    console.log(res);
-    // TODO: tratar datas
     const receiptData = res;
-    let configStartDate; 
-    let configEndDate; 
-
-    if (receiptData.fim)
-    configEndDate = new Date(receiptData.fim).toLocaleDateString();
-    if (receiptData.inicio)
-    configStartDate = new Date(receiptData.inicio).toLocaleDateString();
     this.editReceiptForm.get('receiptID')?.setValue(receiptData.id);
     this.editReceiptForm.get('office')?.setValue(receiptData.escritorio_id);
-    this.editReceiptForm.get('startDate')?.setValue(configStartDate);
-    this.editReceiptForm.get('receiveDate')?.setValue(configEndDate);
+    this.editReceiptForm.get('startDate')?.setValue(receiptData.inicio);
+    this.editReceiptForm.get('receiveDate')?.setValue(receiptData.fim);
     this.editReceiptForm.get('value')?.setValue(receiptData.valor);
     this.editReceiptForm.get('status')?.setValue(receiptData.status);
+    console.log(this.editReceiptForm.get('startDate'));
   }
 
   confirm(req: editReceiptRequest) {
@@ -82,6 +73,6 @@ export class EditReceiptComponent implements OnInit {
   }
 
   backToLastPage() {
-    this.router.navigate(['/listReceipt']);
+    history.back();
   }
 }

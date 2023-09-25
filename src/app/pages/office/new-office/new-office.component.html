@@ -120,14 +120,18 @@
 
     <mat-grid-tile>
       <p class="alingLine">
-        <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Data Inicio</mat-label>
+        <mat-form-field>
+          <mat-label>Data Inicio</mat-label>
           <input
             matInput
+            [matDatepicker]="pickerStartDate"
             formControlName="startDate"
-            maxlength="10"
-            mask="00/00/0000"
           />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerStartDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerStartDate></mat-datepicker>
         </mat-form-field>
       </p>
     </mat-grid-tile>

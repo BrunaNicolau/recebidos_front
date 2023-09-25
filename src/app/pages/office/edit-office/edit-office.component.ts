@@ -44,7 +44,7 @@ export class EditOfficeComponent implements OnInit {
   }
 
   serviceGetOfficeData() {
-    //TODO: ajustar requisicoes 
+    //TODO: ajustar requisicoes
     const req = 33;
     this.officeService.getOffice(req).subscribe({
       next: (res) => {
@@ -53,17 +53,11 @@ export class EditOfficeComponent implements OnInit {
       },
       error: (error) => {
         this.snackBar.open(error.message, '', { duration: 5000 });
-      }
+      },
     });
   }
 
   configInput() {
-    const configStartDate = new Date(
-      this.officeRes.inicio
-    ).toLocaleDateString();
-    let configEndDate;
-    if (this.officeRes.fim)
-      configEndDate = new Date(this.officeRes.fim).toLocaleDateString();
     this.editOfficeForm.get('id')?.setValue(this.officeRes.id);
     this.editOfficeForm
       .get('responsible')
@@ -76,8 +70,8 @@ export class EditOfficeComponent implements OnInit {
     this.editOfficeForm.get('status')?.setValue(this.officeRes.status);
     if (this.editOfficeForm.get('status')?.value == 'inativo')
       this.editOfficeForm.get('status')?.disable();
-    this.editOfficeForm.get('startDate')?.setValue(configStartDate);
-    this.editOfficeForm.get('endDate')?.setValue(configEndDate);
+    this.editOfficeForm.get('startDate')?.setValue(this.officeRes.inicio);
+    this.editOfficeForm.get('endDate')?.setValue(this.officeRes.fim);
   }
 
   checkStatus(t: string) {
@@ -112,6 +106,6 @@ export class EditOfficeComponent implements OnInit {
   }
 
   backToLastPage() {
-    this.router.navigate(['/listOffices']);
+    history.back();
   }
 }

@@ -23,4 +23,8 @@ export class HomeComponent {
   receiptSession() {
     this.router.navigate(['/listReceipt']);
   }
+
+  newReceiptSession() {
+    this.router.navigate(['/newReceipt']);
+  }
 }

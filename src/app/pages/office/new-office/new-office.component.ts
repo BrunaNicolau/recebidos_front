@@ -33,7 +33,7 @@ export class NewOfficeComponent implements OnInit {
       telephone: ['', [Validators.required]],
       document: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      startDate: [this.date.toLocaleDateString(), [Validators.required]]
+      startDate: [this.date, [Validators.required]],
     });
   }
 
@@ -53,6 +53,6 @@ export class NewOfficeComponent implements OnInit {
   }
 
   backToLastPage() {
-    this.router.navigate(['/listOffices']);
+    history.back();
   }
 }
