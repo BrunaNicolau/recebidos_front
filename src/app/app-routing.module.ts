@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home.component';
 import { ListReceiptsComponent } from './pages/receipt/list-receipts/list-receipts.component';
 import { EditReceiptComponent } from './pages/receipt/edit-receipt/edit-receipt.component';
 import { NewReceiptComponent } from './pages/receipt/new-receipt/new-receipt.component';
+import { UpdateReceiptComponent } from './pages/receipt/update-receipt/update-receipt.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'editOffice', component: EditOfficeComponent},
   {path: 'listReceipt', component: ListReceiptsComponent},
   {path: 'editReceipt', component: EditReceiptComponent},
-  {path: 'newReceipt', component: NewReceiptComponent}
+  {path: 'newReceipt', component: NewReceiptComponent},
+  {path: 'updateReceipt', component: UpdateReceiptComponent},
 ];
 
 @NgModule({

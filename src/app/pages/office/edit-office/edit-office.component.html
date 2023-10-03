@@ -1,25 +1,27 @@
-<p>
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    ></button>
-    <span>Editar de Escritorios</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Editar de Escritorios</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 
-<form [formGroup]="editOfficeForm" (ngSubmit)="confirm(editOfficeForm.value)">
+<form
+  [formGroup]="editOfficeForm"
+  (ngSubmit)="confirm(editOfficeForm.value)"
+  class="form-container"
+>
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">ID</mat-label>
+          <mat-label>ID</mat-label>
           <input matInput formControlName="id" />
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Responsavel</mat-label>
+          <mat-label>Responsavel</mat-label>
           <input matInput formControlName="responsible" />
           <mat-error
             *ngIf="editOfficeForm.controls['responsible'].hasError('required')"
@@ -29,7 +31,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Telefone</mat-label>
+          <mat-label>Telefone</mat-label>
           <input
             type="tel"
             matInput
@@ -57,11 +59,11 @@
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Endereco</mat-label>
+          <mat-label>Endereco</mat-label>
           <input matInput formControlName="address" />
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">CEP</mat-label>
+          <mat-label>CEP</mat-label>
           <input
             matInput
             formControlName="zipCode"
@@ -84,7 +86,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">E-mail</mat-label>
+          <mat-label>E-mail</mat-label>
           <input type="email" matInput formControlName="email" />
           <mat-error
             *ngIf="
@@ -106,7 +108,7 @@
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label class="pesquisar">Documento(CPF/CNPJ)</mat-label>
+          <mat-label>Documento(CPF/CNPJ)</mat-label>
           <input
             matInput
             formControlName="document"
@@ -173,18 +175,17 @@
       </p>
     </mat-grid-tile>
   </mat-grid-list>
-
-  <div class="button-config">
-    <button mat-button color="primary" (click)="backToLastPage()">
-      Voltar
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="!editOfficeForm.valid"
-    >
-      Confirmar
-    </button>
-  </div>
 </form>
+<div class="button-container">
+  <button mat-button color="primary" type="button" (click)="backToLastPage()">
+    Voltar
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!editOfficeForm.valid"
+  >
+    Confirmar
+  </button>
+</div>

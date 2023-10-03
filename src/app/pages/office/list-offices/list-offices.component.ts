@@ -5,6 +5,7 @@ import { TableOfficeModel } from 'src/app/shared/interface/table-office.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
   selector: 'app-list-offices',
@@ -20,7 +21,8 @@ export class ListOfficesComponent implements OnInit {
   constructor(
     private router: Router,
     private OfficeServices: OfficeServices,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private officeDTO: ComunsData
   ) {}
 
   ngOnInit() {
@@ -29,9 +31,10 @@ export class ListOfficesComponent implements OnInit {
 
   callTableDataService() {
     //TODO: ajustar essa req
-    const req = 3;
+    const req = 1;
     this.OfficeServices.ListOffices(req).subscribe({
       next: (res) => {
+        //TODO: mudar essa msg
         if (!res) {
           this.snackBar.open('Erro ao pesquisar escritorio.', '', {
             duration: 5000,
@@ -54,7 +57,8 @@ export class ListOfficesComponent implements OnInit {
     this.dataTable.filter = filterValue.trim().toLowerCase();
   }
 
-  callEditOffice() {
+  callEditOffice(id: any) {
+    this.officeDTO.setReceiptID(id);
     this.router.navigate(['/editOffice']);
   }
 

@@ -1,24 +1,18 @@
-<p>
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    ></button>
-    <span>Listagem Escritorios</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-</p>
-<div class="pt teste">
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Listagem Escritorios</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<div class="table-container">
   <div class="table-config mat-elevation-z8">
     <mat-form-field>
       <mat-label>Filter</mat-label>
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="Ex. ium"
-        #input
-      />
+      <input matInput (keyup)="applyFilter($event)" #input />
     </mat-form-field>
     <table mat-table [dataSource]="dataTable">
       <ng-container matColumnDef="id">
@@ -52,7 +46,7 @@
             mat-mini-fab
             color="primary"
             aria-label="Example icon button with a menu icon"
-            (click)="callEditOffice()"
+            (click)="callEditOffice(element.id)"
           >
             <mat-icon>edit</mat-icon>
           </button>
@@ -65,11 +59,11 @@
     <mat-paginator [pageSizeOptions]="[5, 7]" showFirstLastButtons>
     </mat-paginator>
   </div>
+</div>
 
-  <div class="button-config">
-    <button mat-button color="primary" (click)="backToLastPage()">Voltar</button>
-    <button mat-raised-button color="primary" (click)="callNewOffice()">
-      Novo
-    </button>
-  </div>
+<div class="button-container">
+  <button mat-button color="primary" (click)="backToLastPage()">Voltar</button>
+  <button mat-raised-button color="primary" (click)="callNewOffice()">
+    Novo
+  </button>
 </div>

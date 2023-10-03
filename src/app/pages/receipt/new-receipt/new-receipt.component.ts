@@ -14,7 +14,6 @@ export class NewReceiptComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private receiptService: ReceiptServiceService,
     private snackBar: MatSnackBar
   ) {}

@@ -1,16 +1,14 @@
-<p>
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    ></button>
-    <span>Listagem Recibos</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Listagem Recibos</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 
-<div class="pt teste">
+<div class="table-container">
   <div class="table-config mat-elevation-z8">
     <mat-form-field>
       <mat-label>Filter</mat-label>
@@ -36,9 +34,7 @@
 
       <ng-container matColumnDef="valor">
         <th mat-header-cell *matHeaderCellDef>Valor</th>
-        <td mat-cell *matCellDef="let element">
-         R$ {{ element.valor }}
-        </td>
+        <td mat-cell *matCellDef="let element">R$ {{ element.valor }}</td>
       </ng-container>
 
       <ng-container matColumnDef="status">
@@ -66,13 +62,11 @@
     <mat-paginator [pageSizeOptions]="[5, 7]" showFirstLastButtons>
     </mat-paginator>
   </div>
+</div>
 
-  <div class="button-config">
-    <button mat-button color="primary" (click)="backToLastPage()">
-      Voltar
-    </button>
-    <button mat-raised-button color="primary" (click)="createNewReceipt()">
-      Novo
-    </button>
-  </div>
+<div class="button-container">
+  <button mat-button color="primary" (click)="backToLastPage()">Voltar</button>
+  <button mat-raised-button color="primary" (click)="createNewReceipt()">
+    Novo
+  </button>
 </div>

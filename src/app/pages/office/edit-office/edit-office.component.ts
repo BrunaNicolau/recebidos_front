@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { OfficeServices } from 'src/app/service/office-services.service';
 import { editOfficeRequest } from 'src/app/shared/request/editOfficeRequest';
 import { officeDataResponse } from 'src/app/shared/response/officeDataResponse';
+import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
   selector: 'app-edit-office',
@@ -20,7 +21,8 @@ export class EditOfficeComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private officeService: OfficeServices,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private officeDTO: ComunsData
   ) {}
 
   ngOnInit() {
@@ -44,8 +46,7 @@ export class EditOfficeComponent implements OnInit {
   }
 
   serviceGetOfficeData() {
-    //TODO: ajustar requisicoes
-    const req = 33;
+    const req = this.officeDTO.getReceiptID();
     this.officeService.getOffice(req).subscribe({
       next: (res) => {
         this.officeRes = res;
@@ -83,6 +84,7 @@ export class EditOfficeComponent implements OnInit {
   }
 
   confirm(form: any) {
+    debugger
     const formData = form;
     this.reqEdit.responsible =
       formData.responsible != null ? formData.responsible : '';
@@ -107,5 +109,6 @@ export class EditOfficeComponent implements OnInit {
 
   backToLastPage() {
     history.back();
+    // this.router.navigate(['/listOffices']);
   }
 }

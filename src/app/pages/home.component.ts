@@ -27,4 +27,8 @@ export class HomeComponent {
   newReceiptSession() {
     this.router.navigate(['/newReceipt']);
   }
+
+  editStatusSession() {
+    this.router.navigate(['/updateReceipt']);
+  }
 }

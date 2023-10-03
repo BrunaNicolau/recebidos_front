@@ -1,27 +1,35 @@
-<p>
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    ></button>
-    <span>Recibo</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Cadastrar Recibo</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 
-<form [formGroup]="newReceiptForm" (ngSubmit)="confirm(newReceiptForm.value)">
+<form
+  [formGroup]="newReceiptForm"
+  (ngSubmit)="confirm(newReceiptForm.value)"
+  class="form-container"
+>
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
-        <!-- TODO: criar dropdown com chamada de sevico para os 2 campos abaixo -->
+        <!-- TODO: mudar para servico -->
         <mat-form-field appearance="fill">
           <mat-label>Instituicao</mat-label>
-          <mat-select matInput formControlName="institution"> </mat-select>
+          <mat-select matInput formControlName="institution">
+            <mat-option value="1">Doce Lar</mat-option>
+          </mat-select>
         </mat-form-field>
+        <!-- TODO: mudar para servico -->
         <mat-form-field>
           <mat-label>Escritorio</mat-label>
-          <mat-select formControlName="office"> </mat-select>
+          <mat-select formControlName="office">
+            <mat-option value="33">Paulinho</mat-option>
+            <mat-option value="34">Bruna</mat-option>
+          </mat-select>
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -44,10 +52,10 @@
       </p>
     </mat-grid-tile>
   </mat-grid-list>
-  <div class="button-config">
-    <button mat-button color="primary" (click)="backToLastPage()">
-      Cancelar
-    </button>
-    <button mat-raised-button color="primary" type="submit">Confirmar</button>
-  </div>
 </form>
+<div class="button-container">
+  <button mat-button color="primary" type="button" (click)="backToLastPage()">
+    Cancelar
+  </button>
+  <button mat-raised-button color="primary" type="submit">Confirmar</button>
+</div>

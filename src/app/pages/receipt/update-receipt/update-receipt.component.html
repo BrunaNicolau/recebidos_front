@@ -1,1 +1,78 @@
-<p>update-receipt works!</p>
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    ></button>
+    <span>Atualizar Recibo</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+
+<form
+  [formGroup]="updateReceiptForm"
+  (ngSubmit)="confirm(updateReceiptForm.value)"
+>
+  <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field appearance="fill">
+          <mat-label>Instituicao</mat-label>
+          <input matInput formControlName="receiptID" />
+          <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="searchReceipt(updateReceiptForm.value)"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Situação</mat-label>
+          <mat-select matInput formControlName="status">
+            <mat-option value="E">Emitido</mat-option>
+            <mat-option value="R">Recebido</mat-option>
+            <mat-option value="C">Cancelado</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <p class="alingLine">
+        <mat-form-field>
+          <mat-label>Data de recebimento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerReceiptDate"
+            formControlName="receiptDate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerReceiptDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerReceiptDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Observação</mat-label>
+          <input matInput formControlName="anotation" />
+        </mat-form-field>
+      </p>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="button-config">
+    <button mat-button color="primary" type="button" (click)="backToLastPage()">
+      Voltar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!updateReceiptForm.valid"
+    >
+      Confirmar
+    </button>
+  </div>
+</form>

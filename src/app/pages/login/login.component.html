@@ -1,5 +1,5 @@
-<form>
-  <div class="container">
+<div class="container">
+  <form>
     <div class="login">
       <div class="alignCenter">
         <img src="assets/img/logoStxt.png" alt="" />
@@ -7,25 +7,27 @@
 
       <!-- TODO: linkar no forms -->
       <mat-form-field class="fullWidth">
-        <mat-label >Usuário</mat-label>
-        <input matInput [formControl]="usuario"/>
+        <mat-label>Usuário</mat-label>
+        <input matInput [formControl]="usuario" />
       </mat-form-field>
 
       <mat-form-field class="fullWidth">
         <mat-label>senha</mat-label>
-        <input matInput [formControl]="senha"/>
+        <input matInput [formControl]="senha" />
       </mat-form-field>
 
       <mat-checkbox [formControl]="lembrar">Mater-me conectado</mat-checkbox>
       <!-- TODO: POR LINK PARA TELA DE RECUPERAÇÃOD E SENHA -->
-      <br>
+      <br />
       <div class="alignCenter">
         <a>esqueci a senha</a>
       </div>
       <br />
       <div class="alignCenter">
-        <button mat-raised-button color="primary" (click)="logar()">Logar</button>
+        <button mat-raised-button color="primary" (click)="logar()">
+          Logar
+        </button>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

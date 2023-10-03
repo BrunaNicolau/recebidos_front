@@ -58,7 +58,6 @@ export class EditReceiptComponent implements OnInit {
     this.editReceiptForm.get('receiveDate')?.setValue(receiptData.fim);
     this.editReceiptForm.get('value')?.setValue(receiptData.valor);
     this.editReceiptForm.get('status')?.setValue(receiptData.status);
-    console.log(this.editReceiptForm.get('startDate'));
   }
 
   confirm(req: editReceiptRequest) {
