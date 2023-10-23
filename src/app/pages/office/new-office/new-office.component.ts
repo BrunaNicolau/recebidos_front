@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { OfficeServices } from 'src/app/service/office-services.service';
+import { OfficeServices } from 'src/app/service/office.service';
 import { newOfficeRequest } from 'src/app/shared/request/newOfficeRequest';
 
 @Component({

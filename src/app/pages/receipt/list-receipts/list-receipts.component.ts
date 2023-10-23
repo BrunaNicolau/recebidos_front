@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { TableReceitModel } from 'src/app/shared/interface/table-receipt.model';
 import { MatPaginator } from '@angular/material/paginator';
-import { ReceiptServiceService } from 'src/app/service/receipt-service.service';
+import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

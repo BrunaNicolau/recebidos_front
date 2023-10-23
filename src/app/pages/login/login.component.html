@@ -1,33 +1,48 @@
 <div class="container">
-  <form>
+  <form [formGroup]="authForm" (ngSubmit)="logar(authForm.value)">
     <div class="login">
       <div class="alignCenter">
-        <img src="assets/img/logoStxt.png" alt="" />
+        <img src="assets/img/logoStxt.png" alt="Company Logo" />
       </div>
+      <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+        <mat-grid-tile class="alingLine">
+          <mat-form-field class="fullWidth">
+            <mat-label>Usuário</mat-label>
+            <input matInput formControlName="username" />
+          </mat-form-field>
+        </mat-grid-tile>
 
-      <!-- TODO: linkar no forms -->
-      <mat-form-field class="fullWidth">
-        <mat-label>Usuário</mat-label>
-        <input matInput [formControl]="usuario" />
-      </mat-form-field>
+        <mat-grid-tile class="alingLine">
+          <div>
+            <mat-form-field class="fullWidth">
+              <mat-label>Senha</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+              />
+              <mat-icon matSuffix (click)="hide = !hide">{{
+                hide ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </mat-form-field>
 
-      <mat-form-field class="fullWidth">
-        <mat-label>senha</mat-label>
-        <input matInput [formControl]="senha" />
-      </mat-form-field>
+            <mat-checkbox formControlName="remember"
+              >Mantenha-me conectado
+            </mat-checkbox>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
 
-      <mat-checkbox [formControl]="lembrar">Mater-me conectado</mat-checkbox>
-      <!-- TODO: POR LINK PARA TELA DE RECUPERAÇÃOD E SENHA -->
-      <br />
-      <div class="alignCenter">
-        <a>esqueci a senha</a>
-      </div>
-      <br />
-      <div class="alignCenter">
-        <button mat-raised-button color="primary" (click)="logar()">
-          Logar
-        </button>
-      </div>
+      <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
+        <div class="pt-5">
+          <a href="url">Esqueci a senha</a>
+        </div>
+        <div class="alignCenter pt-5">
+          <button mat-raised-button color="primary" type="submit">
+            Confirmar
+          </button>
+        </div>
+      </mat-grid-list>
     </div>
   </form>
 </div>

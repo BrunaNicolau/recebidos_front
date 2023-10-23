@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { OfficeServices } from 'src/app/service/office-services.service';
+import { OfficeServices } from 'src/app/service/office.service';
 import { editOfficeRequest } from 'src/app/shared/request/editOfficeRequest';
 import { officeDataResponse } from 'src/app/shared/response/officeDataResponse';
 import { ComunsData } from 'src/app/shared/utils/ComunsData';
@@ -18,7 +17,6 @@ export class EditOfficeComponent implements OnInit {
   reqEdit: editOfficeRequest = {};
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
     private officeService: OfficeServices,
     private snackBar: MatSnackBar,
@@ -84,7 +82,6 @@ export class EditOfficeComponent implements OnInit {
   }
 
   confirm(form: any) {
-    debugger
     const formData = form;
     this.reqEdit.responsible =
       formData.responsible != null ? formData.responsible : '';
@@ -109,6 +106,5 @@ export class EditOfficeComponent implements OnInit {
 
   backToLastPage() {
     history.back();
-    // this.router.navigate(['/listOffices']);
   }
 }

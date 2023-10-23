@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ListOfficesComponent } from './office/list-offices/list-offices.component';
 import { NewOfficeComponent } from './office/new-office/new-office.component';
 import { EditOfficeComponent } from './office/edit-office/edit-office.component';
-import { OfficeServices } from '../service/office-services.service';
+import { OfficeServices } from '../service/office.service';
 import { LoginComponent } from './login/login.component';
 import { ListReceiptsComponent } from './receipt/list-receipts/list-receipts.component';
 import { EditReceiptComponent } from './receipt/edit-receipt/edit-receipt.component';

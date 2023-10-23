@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ReceiptServiceService } from 'src/app/service/receipt-service.service';
+import { ReceiptServiceService } from 'src/app/service/receipt.service';
 
 @Component({
   selector: 'app-new-receipt',

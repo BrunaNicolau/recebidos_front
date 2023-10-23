@@ -1,18 +1,17 @@
-<p>
-  <mat-toolbar color="primary">
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with menu icon"
-    ></button>
-    <span>Atualizar Recibo</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  ></button>
+  <span>Atualizar Recibo</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 
 <form
   [formGroup]="updateReceiptForm"
   (ngSubmit)="confirm(updateReceiptForm.value)"
+  class="form-container"
 >
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
@@ -61,18 +60,17 @@
       </p>
     </mat-grid-tile>
   </mat-grid-list>
-
-  <div class="button-config">
-    <button mat-button color="primary" type="button" (click)="backToLastPage()">
-      Voltar
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="!updateReceiptForm.valid"
-    >
-      Confirmar
-    </button>
-  </div>
 </form>
+<div class="button-container">
+  <button mat-button color="primary" type="button" (click)="backToLastPage()">
+    Voltar
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!updateReceiptForm.valid"
+  >
+    Confirmar
+  </button>
+</div>

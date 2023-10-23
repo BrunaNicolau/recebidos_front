@@ -1,36 +1,46 @@
-import { Component, Injectable } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-
-@Injectable()
-export class LoginComponent {
-  usuario = new FormControl('', [Validators.required]);
-  senha = new FormControl('', [Validators.required]);
-  lembrar = new FormControl('');
+export class LoginComponent implements OnInit {
+  authForm: FormGroup;
+  hide: Boolean = true;
 
   constructor(
-    private router: Router,
-    // private testeService: EscritorioService
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
-  logar() {
-    console.log('criar o serviço de autenticação');
-    const req = { nome: 'bruna' };
-    // this.testeService.teste(req).subscribe({
-    //   next: (resp) => {
-    //     console.log(resp);
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   },
-    // });
-    this.router.navigate(['/adm']);
+  ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.authForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      remember: ['', Validators.required],
+    });
+  }
+
+  logar(req: any) {
+    this.authService.authService(req).subscribe({
+      next: (resp) => {
+        console.log(resp);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        this.snackBar.open(error.message, '', { duration: 5000 });
+      },
+    });
   }
 }

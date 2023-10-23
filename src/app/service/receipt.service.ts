@@ -33,4 +33,10 @@ export class ReceiptServiceService {
       .pipe(map((res: any) => res as any));
   }
 
+  public updateReceipt(req: any) {
+    return this.httpClient
+      .put('/recebidos/receipt/updateReceipt', req)
+      .pipe(map((res: any) => res as any));
+  }
+
 }

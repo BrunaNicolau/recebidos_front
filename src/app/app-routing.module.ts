@@ -12,7 +12,7 @@ import { UpdateReceiptComponent } from './pages/receipt/update-receipt/update-re
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'adm', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'listOffices', component: ListOfficesComponent},
   {path: 'newOffice', component: NewOfficeComponent},
   {path: 'editOffice', component: EditOfficeComponent},

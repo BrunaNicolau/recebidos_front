@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { OfficeServices } from 'src/app/service/office-services.service';
+import { OfficeServices } from 'src/app/service/office.service';
 import { TableOfficeModel } from 'src/app/shared/interface/table-office.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
