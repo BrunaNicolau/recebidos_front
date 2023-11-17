@@ -10,7 +10,7 @@ export class AuthService {
 
   public authService(req: any) {
     return this.httpClient
-      .post('/recebidos/authService/', req)
+      .post('/recebidos/login', req)
       .pipe(map((res: any) => res as any));
   }
 }

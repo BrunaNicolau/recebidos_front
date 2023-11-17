@@ -11,7 +11,9 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LoginComponent implements OnInit {
   authForm: FormGroup;
-  hide: Boolean = true;
+  hidePassword: Boolean = true;
+  showLoginError: Boolean = false;
+
 
   constructor(
     private authService: AuthService,
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      remember: ['', Validators.required],
+      remember: [false, Validators.required],
     });
   }
 
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         this.snackBar.open(error.message, '', { duration: 5000 });
+        //TODO: Mostrar erro no form
+        this.showLoginError = true;
       },
     });
   }
