@@ -8,9 +8,15 @@ import { map } from 'rxjs';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
-  public authService(req: any) {
+  public login(req: any) {
     return this.httpClient
       .post('/recebidos/login', req)
+      .pipe(map((res: any) => res as any));
+  }
+
+  public logout() {
+    return this.httpClient
+      .get('/recebidos/logout')
       .pipe(map((res: any) => res as any));
   }
 }

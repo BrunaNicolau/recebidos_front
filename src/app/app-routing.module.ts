@@ -9,21 +9,50 @@ import { ListReceiptsComponent } from './pages/receipt/list-receipts/list-receip
 import { EditReceiptComponent } from './pages/receipt/edit-receipt/edit-receipt.component';
 import { NewReceiptComponent } from './pages/receipt/new-receipt/new-receipt.component';
 import { UpdateReceiptComponent } from './pages/receipt/update-receipt/update-receipt.component';
+import { AuthGuard } from './service/auth.guard.service';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'listOffices', component: ListOfficesComponent},
-  {path: 'newOffice', component: NewOfficeComponent},
-  {path: 'editOffice', component: EditOfficeComponent},
-  {path: 'listReceipt', component: ListReceiptsComponent},
-  {path: 'editReceipt', component: EditReceiptComponent},
-  {path: 'newReceipt', component: NewReceiptComponent},
-  {path: 'updateReceipt', component: UpdateReceiptComponent},
+  { path: '', component: LoginComponent },
+  { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
+  {
+    path: 'listOffices',
+    canActivate: [AuthGuard],
+    component: ListOfficesComponent,
+  },
+  {
+    path: 'newOffice',
+    canActivate: [AuthGuard],
+    component: NewOfficeComponent,
+  },
+  {
+    path: 'editOffice',
+    canActivate: [AuthGuard],
+    component: EditOfficeComponent,
+  },
+  {
+    path: 'listReceipt',
+    canActivate: [AuthGuard],
+    component: ListReceiptsComponent,
+  },
+  {
+    path: 'editReceipt',
+    canActivate: [AuthGuard],
+    component: EditReceiptComponent,
+  },
+  {
+    path: 'newReceipt',
+    canActivate: [AuthGuard],
+    component: NewReceiptComponent,
+  },
+  {
+    path: 'updateReceipt',
+    canActivate: [AuthGuard],
+    component: UpdateReceiptComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
