@@ -43,7 +43,7 @@ export class HomeComponent {
   logOut() {
     this.authService.logout().subscribe({
       next: () => {
-        localStorage.removeItem('user')
+        localStorage.removeItem('userLevel')
         this.router.navigate(['/']);
       },
       error: (error) => {

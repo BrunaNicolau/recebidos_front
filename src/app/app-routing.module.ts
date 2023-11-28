@@ -9,44 +9,55 @@ import { ListReceiptsComponent } from './pages/receipt/list-receipts/list-receip
 import { EditReceiptComponent } from './pages/receipt/edit-receipt/edit-receipt.component';
 import { NewReceiptComponent } from './pages/receipt/new-receipt/new-receipt.component';
 import { UpdateReceiptComponent } from './pages/receipt/update-receipt/update-receipt.component';
-import { AuthGuard } from './service/auth.guard.service';
+import { AuthGuard } from './service/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
+  {
+    path: 'home',
+    canActivate: [AuthGuard],
+    component: HomeComponent,
+  },
   {
     path: 'listOffices',
     canActivate: [AuthGuard],
+    data: { userLevel: 1 },
     component: ListOfficesComponent,
   },
   {
     path: 'newOffice',
     canActivate: [AuthGuard],
+    data: { userLevel: 1 },
     component: NewOfficeComponent,
   },
   {
     path: 'editOffice',
     canActivate: [AuthGuard],
+    data: { userLevel: 1 },
     component: EditOfficeComponent,
   },
   {
     path: 'listReceipt',
     canActivate: [AuthGuard],
+    data: { userLevel: 1 },
     component: ListReceiptsComponent,
   },
   {
     path: 'editReceipt',
     canActivate: [AuthGuard],
+    data: { userLevel: 1 },
     component: EditReceiptComponent,
   },
   {
     path: 'newReceipt',
     canActivate: [AuthGuard],
+    data: { userLevel: 2 },
     component: NewReceiptComponent,
   },
   {
     path: 'updateReceipt',
     canActivate: [AuthGuard],
+    data: { userLevel: 2 },
     component: UpdateReceiptComponent,
   },
 ];

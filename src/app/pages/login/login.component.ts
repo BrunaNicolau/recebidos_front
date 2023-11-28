@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   logar(req: any) {
     this.authService.login(req).subscribe({
       next: (res) => {
-        localStorage.setItem('user', res.name);
+        localStorage.setItem('userLevel', res.user.profile);
         this.router.navigate(['/home']);
       },
       error: () => {
