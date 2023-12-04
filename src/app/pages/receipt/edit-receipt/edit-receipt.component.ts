@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { editReceiptRequest } from 'src/app/shared/request/editReceiptRequest';
 import { receiptDataResponse } from 'src/app/shared/response/receiptDataResponse';
@@ -15,7 +14,6 @@ export class EditReceiptComponent implements OnInit {
   editReceiptForm: FormGroup;
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,
     private snackBar: MatSnackBar
@@ -39,7 +37,7 @@ export class EditReceiptComponent implements OnInit {
   }
 
   serviceGetReceiptData() {
-    const req = 1;
+    const req = this.receiptService.getSelectedReceiptId();
     this.receiptService.receiptById(req).subscribe({
       next: (res) => {
         this.configInput(res);

@@ -138,17 +138,17 @@
       </p>
     </mat-grid-tile>
   </mat-grid-list>
+  <div class="button-container">
+    <button mat-button color="primary" type="button" (click)="backToLastPage()">
+      Voltar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!newOfficeForm.valid"
+    >
+      Confirmar
+    </button>
+  </div>
 </form>
-<div class="button-container">
-  <button mat-button color="primary" type="button" (click)="backToLastPage()">
-    Voltar
-  </button>
-  <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    [disabled]="!newOfficeForm.valid"
-  >
-    Confirmar
-  </button>
-</div>

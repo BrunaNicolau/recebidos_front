@@ -8,9 +8,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
-  selector: 'app-list-offices',
-  templateUrl: './list-offices.component.html',
-  styleUrls: ['./list-offices.component.scss'],
+  selector: 'app-list-office',
+  templateUrl: './list-office.component.html',
+  styleUrls: ['./list-office.component.scss'],
 })
 export class ListOfficesComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'status', 'acao'];
@@ -59,11 +59,11 @@ export class ListOfficesComponent implements OnInit {
 
   callEditOffice(id: any) {
     this.officeDTO.setReceiptID(id);
-    this.router.navigate(['/editOffice']);
+    this.router.navigate(['office/edit']);
   }
 
   callNewOffice() {
-    this.router.navigate(['/newOffice']);
+    this.router.navigate(['office/new']);
   }
 
   backToLastPage() {

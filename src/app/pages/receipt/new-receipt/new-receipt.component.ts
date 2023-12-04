@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-new-receipt',
   templateUrl: './new-receipt.component.html',
@@ -31,13 +30,20 @@ export class NewReceiptComponent {
     });
   }
 
-  //TODO: o escritorio e instituicao ira ser pego via header ?
+  //TODO: o escritorio e instituicao ira ser pego via header ?, ver esse servico no back
   confirm(req: any) {
     this.receiptService.newReceipt(req).subscribe({
       next: (res) => {
-        this.snackBar.open(res.message, '', { duration: 5000 });
+        if (res instanceof Blob) {
+          //TODO: deixar o nome do arquivo dinamico 
+          saveAs(res, 'Receipt.pdf');
+          this.snackBar.open('Receipt downloaded successfully', '', { duration: 5000 });
+        } else {
+          this.snackBar.open('Unexpected response from the server', '', { duration: 5000 });
+        }
       },
       error: (error) => {
+        console.log(error)
         this.snackBar.open(error.message, '', { duration: 5000 });
       },
     });

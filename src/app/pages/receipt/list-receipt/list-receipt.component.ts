@@ -7,9 +7,9 @@ import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-list-receipts',
-  templateUrl: './list-receipts.component.html',
-  styleUrls: ['./list-receipts.component.scss'],
+  selector: 'app-list-receipt',
+  templateUrl: './list-receipt.component.html',
+  styleUrls: ['./list-receipt.component.scss'],
 })
 export class ListReceiptsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -19,7 +19,7 @@ export class ListReceiptsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private receiptServices: ReceiptServiceService,
+    private receiptService: ReceiptServiceService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -29,7 +29,7 @@ export class ListReceiptsComponent implements OnInit {
 
   tableDataService() {
     const req = 1;
-    this.receiptServices.ListReceipts(req).subscribe({
+    this.receiptService.ListReceipts(req).subscribe({
       next: (res) => {
         this.dataTable = new MatTableDataSource<TableReceitModel>(res);
       },
@@ -46,8 +46,9 @@ export class ListReceiptsComponent implements OnInit {
     this.dataTable.filter = filterValue.trim().toLowerCase();
   }
 
-  callEditReceipt() {
-    this.router.navigate(['/editReceipt']);
+  callEditReceipt(id: number) {
+    this.receiptService.setSelectedReceiptId(id);
+    this.router.navigate(['receipt/edit']);
   }
 
   backToLastPage() {
@@ -55,6 +56,6 @@ export class ListReceiptsComponent implements OnInit {
   }
 
   createNewReceipt() {
-    this.router.navigate(['/newReceipt']);
+    this.router.navigate(['receipt/new']);
   }
 }

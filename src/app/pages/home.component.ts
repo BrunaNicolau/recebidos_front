@@ -23,20 +23,21 @@ export class HomeComponent {
     private snackBar: MatSnackBar
   ) {}
 
-  officesSession() {
-    this.router.navigate(['/listOffices']);
+  listOfficesSession() {
+    this.router.navigate(['/office']);
   }
 
-  receiptSession() {
-    this.router.navigate(['/listReceipt']);
+  listReceiptSession() {
+    this.router.navigate(['/receipt']);
   }
 
   newReceiptSession() {
-    this.router.navigate(['/newReceipt']);
+    this.router.navigate(['/receipt/new']);
   }
 
   editStatusSession() {
-    this.router.navigate(['/updateReceipt']);
+    //TODO: validar essa rota
+    this.router.navigate(['/receipt/edit']);
   }
 
   //TODO: virar component

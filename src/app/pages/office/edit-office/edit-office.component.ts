@@ -14,7 +14,6 @@ import { ComunsData } from 'src/app/shared/utils/ComunsData';
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;
   officeRes: officeDataResponse;
-  reqEdit: editOfficeRequest = {};
 
   constructor(
     private fb: FormBuilder,
@@ -81,25 +80,42 @@ export class EditOfficeComponent implements OnInit {
     }
   }
 
-  confirm(form: any) {
+  createEditReq(form: any) {
     const formData = form;
-    this.reqEdit.responsible =
-      formData.responsible != null ? formData.responsible : '';
-    this.reqEdit.document = formData.document != null ? formData.document : 0;
-    this.reqEdit.address = formData.address != null ? formData.address : '';
-    this.reqEdit.zipCode = formData.zipCode != null ? formData.zipCode : 0;
-    this.reqEdit.status = formData.status != null ? formData.status : '';
-    this.reqEdit.officeId = this.officeRes.id != null ? this.officeRes.id : 0;
-    this.reqEdit.telephone =
-      formData.telephone != null ? formData.telephone : 0;
-    if (formData.endDate) this.reqEdit.endDate = formData.endDate;
-    this.reqEdit.email = formData.email != null ? formData.email : '';
-    this.officeService.editOffice(this.reqEdit).subscribe({
+    const reqEdit: editOfficeRequest = {};
+    reqEdit.responsible = formData.responsible || '';
+    reqEdit.document = formData.document || 0;
+    reqEdit.address = formData.address || '';
+    reqEdit.zipCode = formData.zipCode || 0;
+    reqEdit.officeId = this.officeRes.id || 0;
+    reqEdit.telephone = formData.telephone || 0;
+    reqEdit.email = formData.email || '';
+    if (formData.endDate) reqEdit.endDate = formData.endDate;
+    if (formData.status && !formData.status.disabled)
+      reqEdit.status = formData.status;
+    else reqEdit.status = 'inativo';
+
+    return reqEdit;
+  }
+
+  confirm(form: any) {
+    const req = this.createEditReq(form);
+    this.officeService.editOffice(req).subscribe({
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
       },
       error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+        //TODO: melhorar isso no back
+        if (
+          error.error &&
+          Array.isArray(error.error.error) &&
+          error.error.error.length > 0
+        ) {
+          const errorMessage = error.error.error[0];
+          this.snackBar.open(errorMessage, '', { duration: 5000 });
+        } else {
+          this.snackBar.open('An error occurred', '', { duration: 5000 });
+        }
       },
     });
   }
