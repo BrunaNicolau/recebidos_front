@@ -37,10 +37,11 @@
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label>Valor</mat-label>
-          <input matInput formControlName="value" />
+          <input matInput formControlName="value" type="number" />
         </mat-form-field>
         <mat-form-field>
           <mat-label>Metodo de Pagamento</mat-label>
+          <!-- TODO: Montar um enum -->
           <mat-select formControlName="paymentMethod">
             <mat-option value="C">Cartão</mat-option>
             <mat-option value="D">Dinheiro</mat-option>

@@ -23,10 +23,10 @@ export class ReceiptServiceService {
   }
 
   //TODO: mudar o tipo
-  public newReceipt(req: any) {
-    return this.httpClient.post('/recebidos/receipt/createReceipts', req, {
-      responseType: 'blob',
-    });
+  public createReceipt(req: any) {
+    return this.httpClient
+      .post('/recebidos/receipt/createReceipts', req)
+      .pipe(map((res: any) => res as any));
   }
 
   public editReceipt(req: any) {
@@ -37,8 +37,15 @@ export class ReceiptServiceService {
 
   public updateReceipt(req: any) {
     return this.httpClient
-      .put('/recebidos/receipt/updateReceipt', req)
+      .patch('/recebidos/receipt/editReceipt', req)
       .pipe(map((res: any) => res as any));
+  }
+
+  public emmitReceipt(req: any) {
+    return this.httpClient
+      .get('/recebidos/receipt/generatePdf/' + req, {
+        responseType: 'blob'
+      })
   }
 
   getSelectedReceiptId(): number {

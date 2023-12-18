@@ -17,20 +17,21 @@
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
-          <mat-label>Instituicao</mat-label>
-          <input matInput formControlName="receiptID" />
-          <button
-            matSuffix
-            mat-icon-button
-            aria-label="Clear"
-            (click)="searchReceipt(updateReceiptForm.value)"
-          >
-            <mat-icon>search</mat-icon>
-          </button>
+          <mat-label>Recibo</mat-label>
+          <input
+            matInput
+            formControlName="receiptID"
+            (blur)="searchReceipt(updateReceiptForm.value)"
+          />
+          <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Situação</mat-label>
-          <mat-select matInput formControlName="status">
+          <mat-select
+            matInput
+            formControlName="status"
+            (change)="controllInput(updateReceiptForm.value)"
+          >
             <mat-option value="E">Emitido</mat-option>
             <mat-option value="R">Recebido</mat-option>
             <mat-option value="C">Cancelado</mat-option>
@@ -53,24 +54,20 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #pickerReceiptDate></mat-datepicker>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Observação</mat-label>
-          <input matInput formControlName="anotation" />
-        </mat-form-field>
       </p>
     </mat-grid-tile>
   </mat-grid-list>
+  <div class="button-container">
+    <button mat-button color="primary" type="button" (click)="backToLastPage()">
+      Voltar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!updateReceiptForm.valid"
+    >
+      Confirmar
+    </button>
+  </div>
 </form>
-<div class="button-container">
-  <button mat-button color="primary" type="button" (click)="backToLastPage()">
-    Voltar
-  </button>
-  <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    [disabled]="!updateReceiptForm.valid"
-  >
-    Confirmar
-  </button>
-</div>

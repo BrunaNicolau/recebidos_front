@@ -30,9 +30,26 @@ export class NewReceiptComponent {
     });
   }
 
-  //TODO: o escritorio e instituicao ira ser pego via header ?, ver esse servico no back
+  //TODO: o escritorio e instituicao ira ser pego via header
   confirm(req: any) {
-    this.receiptService.newReceipt(req).subscribe({
+    this.receiptService.createReceipt(req).subscribe({
+      next: (res) => {
+        if (res) {       
+          this.snackBar.open(res, '', { duration: 5000 });
+          this.generatePDF(res.id)
+        } else {
+          this.snackBar.open('Unexpected response from the server', '', { duration: 5000 });
+        }
+      },
+      error: (error) => {
+        console.log(error)
+        this.snackBar.open(error.message, '', { duration: 5000 });
+      },
+    });
+  }
+
+  generatePDF(req: number) {
+    this.receiptService.emmitReceipt(req).subscribe({
       next: (res) => {
         if (res instanceof Blob) {
           //TODO: deixar o nome do arquivo dinamico 
@@ -43,7 +60,6 @@ export class NewReceiptComponent {
         }
       },
       error: (error) => {
-        console.log(error)
         this.snackBar.open(error.message, '', { duration: 5000 });
       },
     });

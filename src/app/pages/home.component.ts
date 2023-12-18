@@ -37,7 +37,7 @@ export class HomeComponent {
 
   editStatusSession() {
     //TODO: validar essa rota
-    this.router.navigate(['/receipt/edit']);
+    this.router.navigate(['/receipt/update']);
   }
 
   //TODO: virar component
