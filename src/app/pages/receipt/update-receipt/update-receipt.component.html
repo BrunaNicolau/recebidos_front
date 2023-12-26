@@ -21,17 +21,13 @@
           <input
             matInput
             formControlName="receiptID"
-            (blur)="searchReceipt(updateReceiptForm.value)"
+            (blur)="searchReceipt($event)"
           />
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Situação</mat-label>
-          <mat-select
-            matInput
-            formControlName="status"
-            (change)="controllInput(updateReceiptForm.value)"
-          >
+          <mat-select matInput formControlName="status">
             <mat-option value="E">Emitido</mat-option>
             <mat-option value="R">Recebido</mat-option>
             <mat-option value="C">Cancelado</mat-option>
@@ -65,7 +61,7 @@
       mat-raised-button
       color="primary"
       type="submit"
-      [disabled]="!updateReceiptForm.valid"
+      [disabled]="isSubmitButtonDisabled()"
     >
       Confirmar
     </button>
