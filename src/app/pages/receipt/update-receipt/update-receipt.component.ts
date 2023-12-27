@@ -10,7 +10,7 @@ import { ReceiptServiceService } from 'src/app/service/receipt.service';
 })
 export class UpdateReceiptComponent {
   updateReceiptForm: FormGroup;
-
+  pageHeader: string = 'Atualizar Recibo'
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,

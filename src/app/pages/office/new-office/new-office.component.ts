@@ -13,6 +13,7 @@ import { newOfficeRequest } from 'src/app/shared/request/newOfficeRequest';
 export class NewOfficeComponent implements OnInit {
   newOfficeForm: FormGroup;
   date = new Date();
+  pageHeader: string = "Cadastro de Escritorios";
 
   constructor(
     private router: Router,

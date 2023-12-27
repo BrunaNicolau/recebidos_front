@@ -16,7 +16,7 @@ export class ListReceiptsComponent implements OnInit {
 
   displayedColumns = ['id', 'responsavel', 'valor', 'status', 'acao'];
   dataTable: any;
-
+  pageHeader: string = 'Listagem Recibos';
   constructor(
     private router: Router,
     private receiptService: ReceiptServiceService,

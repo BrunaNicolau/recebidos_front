@@ -14,6 +14,7 @@ import { ComunsData } from 'src/app/shared/utils/ComunsData';
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;
   officeRes: officeDataResponse;
+  pageHeader: string = "Editar de Escritorios";
 
   constructor(
     private fb: FormBuilder,

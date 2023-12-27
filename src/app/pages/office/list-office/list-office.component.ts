@@ -15,6 +15,7 @@ import { ComunsData } from 'src/app/shared/utils/ComunsData';
 export class ListOfficesComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'status', 'acao'];
   dataTable: any;
+  pageHeader: string = "Listagem Escritorios";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

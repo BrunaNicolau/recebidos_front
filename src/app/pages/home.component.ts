@@ -36,11 +36,10 @@ export class HomeComponent {
   }
 
   editStatusSession() {
-    //TODO: validar essa rota
     this.router.navigate(['/receipt/update']);
   }
 
-  //TODO: virar component
+
   logOut() {
     this.authService.logout().subscribe({
       next: () => {

@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
@@ -9,17 +8,15 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent implements OnInit {
   authForm: FormGroup;
   hidePassword: Boolean = true;
   showLoginError: Boolean = false;
-  
+
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router,
-    @Inject(DOCUMENT) private document: any
+    private router: Router
   ) {}
 
   ngOnInit() {

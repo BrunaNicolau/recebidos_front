@@ -10,7 +10,7 @@ import { saveAs } from 'file-saver';
 })
 export class NewReceiptComponent {
   newReceiptForm: FormGroup;
-
+  pageHeader: string = 'Cadastrar Recibo';
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,
@@ -34,15 +34,17 @@ export class NewReceiptComponent {
   confirm(req: any) {
     this.receiptService.createReceipt(req).subscribe({
       next: (res) => {
-        if (res) {       
+        if (res) {
           this.snackBar.open(res, '', { duration: 5000 });
-          this.generatePDF(res.id)
+          this.generatePDF(res.id);
         } else {
-          this.snackBar.open('Unexpected response from the server', '', { duration: 5000 });
+          this.snackBar.open('Unexpected response from the server', '', {
+            duration: 5000,
+          });
         }
       },
       error: (error) => {
-        console.log(error)
+        console.log(error);
         this.snackBar.open(error.message, '', { duration: 5000 });
       },
     });
@@ -52,11 +54,15 @@ export class NewReceiptComponent {
     this.receiptService.emmitReceipt(req).subscribe({
       next: (res) => {
         if (res instanceof Blob) {
-          //TODO: deixar o nome do arquivo dinamico 
+          //TODO: deixar o nome do arquivo dinamico
           saveAs(res, 'Receipt.pdf');
-          this.snackBar.open('Receipt downloaded successfully', '', { duration: 5000 });
+          this.snackBar.open('Receipt downloaded successfully', '', {
+            duration: 5000,
+          });
         } else {
-          this.snackBar.open('Unexpected response from the server', '', { duration: 5000 });
+          this.snackBar.open('Unexpected response from the server', '', {
+            duration: 5000,
+          });
         }
       },
       error: (error) => {

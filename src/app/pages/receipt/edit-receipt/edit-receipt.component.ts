@@ -12,7 +12,7 @@ import { receiptDataResponse } from 'src/app/shared/response/receiptDataResponse
 })
 export class EditReceiptComponent implements OnInit {
   editReceiptForm: FormGroup;
-
+  pageHeader: string = "Editar Recibos";
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,

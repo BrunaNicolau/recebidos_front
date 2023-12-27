@@ -1,12 +1,4 @@
-<mat-toolbar color="primary">
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  ></button>
-  <span>Cadastro de Escritorios</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
+<app-toolbar [pageTitle]="pageHeader"></app-toolbar>
 
 <form
   [formGroup]="newOfficeForm"
