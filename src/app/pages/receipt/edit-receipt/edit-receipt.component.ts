@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { editReceiptRequest } from 'src/app/shared/request/editReceiptRequest';
 import { receiptDataResponse } from 'src/app/shared/response/receiptDataResponse';
+import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
   selector: 'app-edit-receipt',
@@ -16,7 +17,8 @@ export class EditReceiptComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private comunsData: ComunsData
   ) {}
 
   ngOnInit() {
@@ -37,7 +39,7 @@ export class EditReceiptComponent implements OnInit {
   }
 
   serviceGetReceiptData() {
-    const req = this.receiptService.getSelectedReceiptId();
+    const req = this.comunsData.getReceiptID();
     this.receiptService.receiptById(req).subscribe({
       next: (res) => {
         this.configInput(res);

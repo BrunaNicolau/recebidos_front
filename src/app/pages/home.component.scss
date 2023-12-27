@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 280px;
+  width: 20%;
   background: #FFF;
 }
 
@@ -21,4 +21,10 @@
 mat-list-item:hover {
   background-color: #7b61ff1b;
   cursor: pointer;
+}
+
+.alignLogOut {
+  position: absolute;
+  top: 90%;
+  width: 100%;
 }

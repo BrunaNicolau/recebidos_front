@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   logar(req: any) {
     this.authService.login(req).subscribe({
       next: (res) => {
+        console.log(res);
         localStorage.setItem('userLevel', res.user.profile);
         this.router.navigate(['/home']);
       },
@@ -42,4 +43,11 @@ export class LoginComponent implements OnInit {
       },
     });
   }
+
+  // email: 'a@a.com.br';
+  // id: 1;
+  // institution: 1;
+  // password: 'adm@2022';
+  // profile: 1;
+  // username: 'adm';
 }

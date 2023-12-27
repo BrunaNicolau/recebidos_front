@@ -10,7 +10,7 @@ import { saveAs } from 'file-saver';
 })
 export class NewReceiptComponent {
   newReceiptForm: FormGroup;
-  pageHeader: string = 'Cadastrar Recibo';
+  pageHeader: string = 'Novo Recibo';
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,

@@ -6,8 +6,6 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class ReceiptServiceService {
-  private selectedReceiptId: number;
-
   constructor(private httpClient: HttpClient) {}
 
   public ListReceipts(req: number) {
@@ -22,7 +20,6 @@ export class ReceiptServiceService {
       .pipe(map((res: any) => res as any));
   }
 
-  //TODO: mudar o tipo
   public createReceipt(req: any) {
     return this.httpClient
       .post('/recebidos/receipt/createReceipts', req)
@@ -42,17 +39,8 @@ export class ReceiptServiceService {
   }
 
   public emmitReceipt(req: any) {
-    return this.httpClient
-      .get('/recebidos/receipt/generatePdf/' + req, {
-        responseType: 'blob'
-      })
-  }
-
-  getSelectedReceiptId(): number {
-    return this.selectedReceiptId;
-  }
-
-  setSelectedReceiptId(id: number): void {
-    this.selectedReceiptId = id;
+    return this.httpClient.get('/recebidos/receipt/generatePdf/' + req, {
+      responseType: 'blob',
+    });
   }
 }

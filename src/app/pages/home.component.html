@@ -11,8 +11,8 @@
         <img src="assets/img/logoStxt.png" alt="" />
       </div>
 
-      <div>
-        <div mat-subheader>Gestão</div>
+      <div mat-subheader>
+        Gestão
         <mat-list>
           <mat-list-item (click)="listOfficesSession()">
             <mat-icon matListItemIcon>group</mat-icon>
@@ -23,25 +23,30 @@
             <span matListItemTitle>Recibo</span>
           </mat-list-item>
         </mat-list>
-        <mat-divider></mat-divider>
+      </div>
 
-        <div mat-subheader>Operações</div>
+      <mat-divider></mat-divider>
+
+      <div mat-subheader>
+        Operações
         <mat-list>
           <mat-list-item (click)="newReceiptSession()">
-            <mat-icon matListItemIcon>receipt</mat-icon>
+            <mat-icon matListItemIcon>add</mat-icon>
             <span matListItemTitle>Emissão Recibo</span>
           </mat-list-item>
         </mat-list>
         <mat-list>
           <mat-list-item (click)="editStatusSession()">
-            <mat-icon matListItemIcon>receipt</mat-icon>
+            <mat-icon matListItemIcon>edit</mat-icon>
             <span matListItemTitle>Atualiza Recibo</span>
           </mat-list-item>
         </mat-list>
+      </div>
 
+      <div class="alignLogOut">
         <mat-list>
           <mat-list-item (click)="logOut()">
-            <mat-icon matListItemIcon>receipt</mat-icon>
+            <mat-icon matListItemIcon>logout</mat-icon>
             <span matListItemTitle>Sair</span>
           </mat-list-item>
         </mat-list>
