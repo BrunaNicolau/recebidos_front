@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
   logar(req: any) {
     this.authService.login(req).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('userLevel', res.user.profile);
+        localStorage.setItem('institutionID', res.user.institution);
+        localStorage.setItem('officeID', res.user.officeid);
         this.router.navigate(['/home']);
       },
       error: () => {
@@ -43,11 +44,4 @@ export class LoginComponent implements OnInit {
       },
     });
   }
-
-  // email: 'a@a.com.br';
-  // id: 1;
-  // institution: 1;
-  // password: 'adm@2022';
-  // profile: 1;
-  // username: 'adm';
 }

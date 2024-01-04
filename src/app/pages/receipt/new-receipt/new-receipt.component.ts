@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { saveAs } from 'file-saver';
+import { OfficeServices } from 'src/app/service/office.service';
 @Component({
   selector: 'app-new-receipt',
   templateUrl: './new-receipt.component.html',
@@ -11,27 +12,60 @@ import { saveAs } from 'file-saver';
 export class NewReceiptComponent {
   newReceiptForm: FormGroup;
   pageHeader: string = 'Novo Recibo';
+  officeID = localStorage.getItem('officeID');
+  listOffices: any;
+
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,
+    private officeService: OfficeServices,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.initForm();
+    if (this.officeID != 'null') {
+      this.getOfficeService(this.officeID);
+    } else {
+      this.listOfficeService();
+    }
   }
 
   initForm() {
     this.newReceiptForm = this.fb.group({
-      institution: [''],
+      institution: [{ value: '1', disabled: true }],
       office: [''],
       value: [''],
       paymentMethod: [''],
     });
   }
 
-  //TODO: o escritorio e instituicao ira ser pego via header
+  getOfficeService(id: any) {
+    this.officeService.getOffice(id).subscribe({
+      next: (res) => {
+        this.listOffices = [res];
+      },
+      error: (error) => {
+        this.snackBar.open(error.message, '', { duration: 5000 });
+      },
+    });
+  }
+
+  listOfficeService() {
+    this.officeService
+      .ListOffices(localStorage.getItem('institutionID'))
+      .subscribe({
+        next: (res) => {
+          this.listOffices = res;
+        },
+        error: (error) => {
+          this.snackBar.open(error.message, '', { duration: 5000 });
+        },
+      });
+  }
+
   confirm(req: any) {
+    req.institution = '1';
     this.receiptService.createReceipt(req).subscribe({
       next: (res) => {
         if (res) {
@@ -44,7 +78,6 @@ export class NewReceiptComponent {
         }
       },
       error: (error) => {
-        console.log(error);
         this.snackBar.open(error.message, '', { duration: 5000 });
       },
     });

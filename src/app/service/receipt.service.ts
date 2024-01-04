@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 
@@ -15,8 +15,10 @@ export class ReceiptServiceService {
   }
 
   public receiptById(req: number) {
+    const officeID = localStorage.getItem('officeID') ?? '';
+    const httpHeader = { office: officeID };
     return this.httpClient
-      .get('/recebidos/receipt/receiptById/' + req)
+      .get('/recebidos/receipt/receiptById/' + req, { headers: httpHeader })
       .pipe(map((res: any) => res as any));
   }
 

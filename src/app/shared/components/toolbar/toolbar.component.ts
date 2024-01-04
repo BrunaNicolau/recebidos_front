@@ -21,6 +21,8 @@ export class ToolbarComponent {
     this.authService.logout().subscribe({
       next: () => {
         localStorage.removeItem('userLevel');
+        localStorage.removeItem('institutionID');
+        localStorage.removeItem('officeID');
         this.router.navigate(['/']);
       },
       error: (error) => {

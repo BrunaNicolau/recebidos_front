@@ -39,10 +39,8 @@ export class NewOfficeComponent implements OnInit {
   }
 
   confirm(form: newOfficeRequest) {
-    // TODO: solucao temporaria
     const req = form;
-    req.institutionId = 1;
-
+    req.institutionId = localStorage.getItem('institutionID');
     this.OfficeServices.newOffice(req).subscribe({
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });

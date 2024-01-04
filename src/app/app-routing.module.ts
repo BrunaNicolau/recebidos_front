@@ -20,8 +20,6 @@ const routes: Routes = [
   },
   {
     path: 'receipt',
-    canActivate: [AuthGuard],
-    data: { userLevel: 1 },
     loadChildren: () =>
       import('./pages/receipt/receipt.module').then((m) => m.ReceiptModule),
   },

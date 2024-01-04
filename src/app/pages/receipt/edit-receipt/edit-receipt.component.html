@@ -11,10 +11,13 @@
           <mat-label>Codigo do Recibo</mat-label>
           <input matInput formControlName="receiptID" />
         </mat-form-field>
-        <!-- TODO: criar um dropdown que chama um servico com os nomes do escritorio -->
         <mat-form-field appearance="fill">
           <mat-label>Escritorio</mat-label>
-          <input matInput formControlName="office" />
+          <mat-select formControlName="office">
+            <mat-option *ngFor="let office of listOffices" [value]="office.id">
+              {{ office.responsavel }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -45,7 +48,7 @@
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field>
-          <mat-label>Data de recebimento</mat-label>
+          <mat-label>Data de emissão</mat-label>
           <input
             matInput
             [matDatepicker]="pickerStartDate"
@@ -62,7 +65,7 @@
           <input
             matInput
             [matDatepicker]="pickerReceiveDate"
-            formControlName="receiveDate"
+            formControlName="receiptDate"
           />
           <mat-datepicker-toggle
             matIconSuffix

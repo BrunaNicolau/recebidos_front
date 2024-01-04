@@ -9,11 +9,22 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AppMaterialModule } from 'src/app/shared/ngMaterial/ngMaterial.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { AuthGuard } from 'src/app/service/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: ListReceiptsComponent },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    data: { userLevel: 1 },
+    component: ListReceiptsComponent,
+  },
   { path: 'new', component: NewReceiptComponent },
-  { path: 'edit', component: EditReceiptComponent },
+  {
+    path: 'edit/:id',
+    canActivate: [AuthGuard],
+    data: { userLevel: 1 },
+    component: EditReceiptComponent,
+  },
   { path: 'update', component: UpdateReceiptComponent },
 ];
 
@@ -22,7 +33,7 @@ const routes: Routes = [
     ListReceiptsComponent,
     EditReceiptComponent,
     NewReceiptComponent,
-    UpdateReceiptComponent
+    UpdateReceiptComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +42,6 @@ const routes: Routes = [
     AppMaterialModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
-    
   ],
 })
 export class ReceiptModule {}

@@ -39,11 +39,12 @@ export class HomeComponent {
     this.router.navigate(['/receipt/update']);
   }
 
-
   logOut() {
     this.authService.logout().subscribe({
       next: () => {
-        localStorage.removeItem('userLevel')
+        localStorage.removeItem('userLevel');
+        localStorage.removeItem('institutionID');
+        localStorage.removeItem('officeID');
         this.router.navigate(['/']);
       },
       error: (error) => {

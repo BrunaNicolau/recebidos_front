@@ -5,7 +5,6 @@ import { TableReceitModel } from 'src/app/shared/interface/table-receipt.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
   selector: 'app-list-receipt',
@@ -21,8 +20,7 @@ export class ListReceiptsComponent implements OnInit {
   constructor(
     private router: Router,
     private receiptService: ReceiptServiceService,
-    private snackBar: MatSnackBar,
-    private comunsData: ComunsData
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -49,8 +47,7 @@ export class ListReceiptsComponent implements OnInit {
   }
 
   callEditReceipt(id: number) {
-    this.comunsData.setReceiptID(id);
-    this.router.navigate(['receipt/edit']);
+    this.router.navigate(['receipt/edit', id]);
   }
 
   backToLastPage() {

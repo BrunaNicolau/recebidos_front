@@ -1,6 +1,4 @@
 export interface receiptDataResponse {
-  // TODO: mudar para ingles
-  // TODO: mudar os tipos
   escritorio_id: number;
   instituicao_id: number;
   id: number;
@@ -8,4 +6,5 @@ export interface receiptDataResponse {
   fim: number;
   valor: string;
   status: string;
+  method_payment: string;
 }

@@ -10,7 +10,7 @@ export class OfficeServices {
   constructor(private httpClient: HttpClient) {}
 
   // TODO: tipar as req e res
-  public ListOffices(req: number) {
+  public ListOffices(req: any) {
     return this.httpClient
       .get('/recebidos/office/officesList/' + req)
       .pipe(map((res: any) => res as any));

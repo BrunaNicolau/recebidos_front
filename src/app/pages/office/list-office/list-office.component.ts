@@ -15,7 +15,7 @@ import { ComunsData } from 'src/app/shared/utils/ComunsData';
 export class ListOfficesComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'status', 'acao'];
   dataTable: any;
-  pageHeader: string = "Listagem Escritorios";
+  pageHeader: string = 'Listagem Escritorios';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -31,8 +31,7 @@ export class ListOfficesComponent implements OnInit {
   }
 
   callTableDataService() {
-    //TODO: ajustar essa req
-    const req = 1;
+    const req = localStorage.getItem('institutionID');
     this.OfficeServices.ListOffices(req).subscribe({
       next: (res) => {
         //TODO: mudar essa msg

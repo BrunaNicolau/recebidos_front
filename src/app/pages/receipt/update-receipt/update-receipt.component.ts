@@ -10,7 +10,7 @@ import { ReceiptServiceService } from 'src/app/service/receipt.service';
 })
 export class UpdateReceiptComponent {
   updateReceiptForm: FormGroup;
-  pageHeader: string = 'Atualizar Recibo'
+  pageHeader: string = 'Atualizar Recibo';
   constructor(
     private fb: FormBuilder,
     private receiptService: ReceiptServiceService,
@@ -30,7 +30,6 @@ export class UpdateReceiptComponent {
   }
 
   searchReceipt(event: any) {
-    // TODO: passar os dados do escritorio via header
     if (event.target.value) {
       this.receiptService.receiptById(event.target.value).subscribe({
         next: (res) => {
