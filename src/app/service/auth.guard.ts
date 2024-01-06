@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const requiredUserLevel = route.data['userLevel'];
 
-    const storedUserLevel = localStorage.getItem('userLevel');
+    const storedUserLevel = sessionStorage.getItem('userLevel');
     const parsedUserLevel = storedUserLevel
       ? parseInt(storedUserLevel, 10)
       : null;

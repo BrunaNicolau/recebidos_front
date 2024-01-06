@@ -28,7 +28,7 @@ export class ListReceiptsComponent implements OnInit {
   }
 
   tableDataService() {
-    const req = 1;
+    const req = sessionStorage.getItem("institutionID");
     this.receiptService.ListReceipts(req).subscribe({
       next: (res) => {
         this.dataTable = new MatTableDataSource<TableReceitModel>(res);

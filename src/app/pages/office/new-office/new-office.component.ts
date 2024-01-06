@@ -40,7 +40,7 @@ export class NewOfficeComponent implements OnInit {
 
   confirm(form: newOfficeRequest) {
     const req = form;
-    req.institutionId = localStorage.getItem('institutionID');
+    req.institutionId = sessionStorage.getItem('institutionID');
     this.OfficeServices.newOffice(req).subscribe({
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });

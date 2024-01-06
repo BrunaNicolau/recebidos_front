@@ -8,14 +8,14 @@ import { map } from 'rxjs';
 export class ReceiptServiceService {
   constructor(private httpClient: HttpClient) {}
 
-  public ListReceipts(req: number) {
+  public ListReceipts(req: any) {
     return this.httpClient
       .get('/recebidos/receipt/listReceipts/' + req)
       .pipe(map((res: any) => res as any));
   }
 
   public receiptById(req: number) {
-    const officeID = localStorage.getItem('officeID') ?? '';
+    const officeID = sessionStorage.getItem('officeID') ?? '';
     const httpHeader = { office: officeID };
     return this.httpClient
       .get('/recebidos/receipt/receiptById/' + req, { headers: httpHeader })

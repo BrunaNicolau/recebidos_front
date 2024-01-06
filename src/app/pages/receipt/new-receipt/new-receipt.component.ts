@@ -12,7 +12,7 @@ import { OfficeServices } from 'src/app/service/office.service';
 export class NewReceiptComponent {
   newReceiptForm: FormGroup;
   pageHeader: string = 'Novo Recibo';
-  officeID = localStorage.getItem('officeID');
+  officeID = sessionStorage.getItem('officeID');
   listOffices: any;
 
   constructor(
@@ -53,7 +53,7 @@ export class NewReceiptComponent {
 
   listOfficeService() {
     this.officeService
-      .ListOffices(localStorage.getItem('institutionID'))
+      .ListOffices(sessionStorage.getItem('institutionID'))
       .subscribe({
         next: (res) => {
           this.listOffices = res;

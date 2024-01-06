@@ -64,7 +64,7 @@ export class EditReceiptComponent implements OnInit {
 
   listOfficeService() {
     this.officeService
-      .ListOffices(localStorage.getItem('institutionID'))
+      .ListOffices(sessionStorage.getItem('institutionID'))
       .subscribe({
         next: (res) => {
           this.listOffices = res;

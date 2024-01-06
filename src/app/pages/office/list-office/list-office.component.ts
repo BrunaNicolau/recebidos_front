@@ -31,7 +31,7 @@ export class ListOfficesComponent implements OnInit {
   }
 
   callTableDataService() {
-    const req = localStorage.getItem('institutionID');
+    const req = sessionStorage.getItem('institutionID');
     this.OfficeServices.ListOffices(req).subscribe({
       next: (res) => {
         //TODO: mudar essa msg
