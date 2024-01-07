@@ -7,11 +7,13 @@ import { OfficeServices } from '../service/office.service';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule, 
