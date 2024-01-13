@@ -9,13 +9,13 @@
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label>Codigo do Recibo</mat-label>
-          <input matInput formControlName="receiptID" />
+          <input matInput formControlName="receiptId" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Escritorio</mat-label>
-          <mat-select formControlName="office">
+          <mat-select formControlName="officeId">
             <mat-option *ngFor="let office of listOffices" [value]="office.id">
-              {{ office.responsavel }}
+              {{ office.responsable }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -26,7 +26,7 @@
       <p class="alingLine">
         <mat-form-field>
           <mat-label>Metodo de Pagamento</mat-label>
-          <mat-select formControlName="typePayment">
+          <mat-select formControlName="methodPayment">
             <mat-option value="C">Cartão</mat-option>
             <mat-option value="D">Dinheiro</mat-option>
             <mat-option value="T">Transferencia</mat-option>

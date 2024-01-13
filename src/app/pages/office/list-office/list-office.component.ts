@@ -27,16 +27,15 @@ export class ListOfficesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.callTableDataService();
+    this.tableDataService();
   }
 
-  callTableDataService() {
+  tableDataService() {
     const req = sessionStorage.getItem('institutionID');
-    this.OfficeServices.ListOffices(req).subscribe({
+    this.OfficeServices.officesList(req).subscribe({
       next: (res) => {
-        //TODO: mudar essa msg
         if (!res) {
-          this.snackBar.open('Erro ao pesquisar escritorio.', '', {
+          this.snackBar.open('Erro ao listar sscritórios.', '', {
             duration: 5000,
           });
         } else {

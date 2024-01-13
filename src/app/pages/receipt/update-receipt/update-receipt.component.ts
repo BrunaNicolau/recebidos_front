@@ -23,7 +23,7 @@ export class UpdateReceiptComponent {
 
   initForm() {
     this.updateReceiptForm = this.fb.group({
-      receiptID: [''],
+      receiptId: [''],
       status: [{ value: '', disabled: true }],
       receiptDate: [{ value: '', disabled: true }],
     });
@@ -48,7 +48,7 @@ export class UpdateReceiptComponent {
   fillInput(receiptData: any) {
     const receipt = receiptData;
     this.updateReceiptForm.get('status')?.setValue(receipt.status);
-    this.updateReceiptForm.get('receiptDate')?.setValue(receipt.fim);
+    this.updateReceiptForm.get('receiptDate')?.setValue(receipt.enddate);
 
     if (receipt.status == 'E') {
       this.updateReceiptForm.get('status')?.enable();
@@ -58,7 +58,7 @@ export class UpdateReceiptComponent {
       this.updateReceiptForm.get('receiptDate')?.disable();
     } else if (receipt.status == 'R') {
       this.updateReceiptForm.get('status')?.disable();
-      this.updateReceiptForm.get('receiptDate')?.setValue(receipt.fim);
+      this.updateReceiptForm.get('receiptDate')?.setValue(receipt.enddate);
       this.updateReceiptForm.get('receiptDate')?.disable();
     }
 
@@ -106,7 +106,7 @@ export class UpdateReceiptComponent {
   }
 
   cleanFields() {
-    this.updateReceiptForm.get('receiptID')?.setValue('');
+    this.updateReceiptForm.get('receiptId')?.setValue('');
     this.updateReceiptForm.get('status')?.setValue('');
     this.updateReceiptForm.get('receiptDate')?.setValue('');
   }

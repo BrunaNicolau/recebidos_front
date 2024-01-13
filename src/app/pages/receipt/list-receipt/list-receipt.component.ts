@@ -12,11 +12,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./list-receipt.component.scss'],
 })
 export class ListReceiptsComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   displayedColumns = ['id', 'responsavel', 'valor', 'status', 'acao'];
   dataTable: any;
   pageHeader: string = 'Listagem Recibos';
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(
     private router: Router,
     private receiptService: ReceiptServiceService,
@@ -28,10 +29,11 @@ export class ListReceiptsComponent implements OnInit {
   }
 
   tableDataService() {
-    const req = sessionStorage.getItem("institutionID");
+    const req = sessionStorage.getItem('institutionID');
     this.receiptService.ListReceipts(req).subscribe({
       next: (res) => {
         this.dataTable = new MatTableDataSource<TableReceitModel>(res);
+        this.dataTable.paginator = this.paginator;
       },
       error: (error) => {
         this.snackBar.open(error.message, '', {

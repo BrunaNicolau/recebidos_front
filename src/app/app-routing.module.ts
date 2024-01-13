@@ -7,7 +7,6 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  {path: '**', component: ErrorPageComponent},
   {
     path: 'home',
     canActivate: [AuthGuard],
@@ -24,8 +23,8 @@ const routes: Routes = [
     path: 'receipt',
     loadChildren: () =>
       import('./pages/receipt/receipt.module').then((m) => m.ReceiptModule),
-  }
-
+  },
+  { path: '**', component: ErrorPageComponent },
 ];
 
 @NgModule({

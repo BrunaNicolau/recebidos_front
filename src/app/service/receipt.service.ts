@@ -10,7 +10,7 @@ export class ReceiptServiceService {
 
   public ListReceipts(req: any) {
     return this.httpClient
-      .get('/recebidos/receipt/listReceipts/' + req)
+      .get('/recebidos/receipt/receiptsList/' + req)
       .pipe(map((res: any) => res as any));
   }
 
@@ -22,9 +22,9 @@ export class ReceiptServiceService {
       .pipe(map((res: any) => res as any));
   }
 
-  public createReceipt(req: any) {
+  public newReceipt(req: any) {
     return this.httpClient
-      .post('/recebidos/receipt/createReceipts', req)
+      .post('/recebidos/receipt/newReceipt', req)
       .pipe(map((res: any) => res as any));
   }
 

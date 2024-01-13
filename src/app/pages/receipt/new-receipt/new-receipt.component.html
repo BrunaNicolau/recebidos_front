@@ -9,15 +9,15 @@
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label>Instituicao</mat-label>
-          <mat-select matInput formControlName="institution">
+          <mat-select matInput formControlName="institutionId">
             <mat-option value="1">Doce Lar</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Escritorio</mat-label>
-          <mat-select formControlName="office">
+          <mat-select formControlName="officeId">
             <mat-option *ngFor="let office of listOffices" [value]="office.id">
-              {{ office.responsavel }}
+              {{ office.responsable }}
             </mat-option>
           </mat-select>
         </mat-form-field>

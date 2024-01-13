@@ -44,7 +44,7 @@ export class NewOfficeComponent implements OnInit {
     this.OfficeServices.newOffice(req).subscribe({
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
-        this.router.navigate(['/listOffices']);
+        this.router.navigate(['office']);
       },
       error: (error) => {
         this.snackBar.open(error.message, '', { duration: 5000 });

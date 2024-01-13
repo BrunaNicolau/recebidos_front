@@ -1,8 +1,8 @@
 .table-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centralize verticalmente */
-  justify-content: center; /* Centralize horizontalmente */
+  align-items: center;
+  justify-content: center;
   height: 80vh; 
 }
 
@@ -12,12 +12,12 @@
 }
 
 .button-container {
-  position: absolute; /* Stick the button to the bottom */
+  position: absolute; 
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%); /* Center the button container */
+  transform: translateX(-50%); 
   width: 100%;
-  max-width: 80%; /* Same max-width as the table */
+  max-width: 80%; 
   display: flex;
   justify-content: space-between;
   padding: 5em;

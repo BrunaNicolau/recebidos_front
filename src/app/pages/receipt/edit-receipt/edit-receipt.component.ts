@@ -39,11 +39,11 @@ export class EditReceiptComponent implements OnInit {
   }
   initForm() {
     this.editReceiptForm = this.fb.group({
-      receiptID: [{ value: '', disabled: true }],
-      office: ['', [Validators.required]],
+      receiptId: [{ value: '', disabled: true }],
+      officeId: ['', [Validators.required]],
       startDate: [{ value: '', disabled: true }],
       receiptDate: [''],
-      typePayment: [''],
+      methodPayment: [''],
       value: ['', [Validators.required]],
       status: ['', [Validators.required]],
     });
@@ -64,7 +64,7 @@ export class EditReceiptComponent implements OnInit {
 
   listOfficeService() {
     this.officeService
-      .ListOffices(sessionStorage.getItem('institutionID'))
+      .officesList(sessionStorage.getItem('institutionID'))
       .subscribe({
         next: (res) => {
           this.listOffices = res;
@@ -77,19 +77,19 @@ export class EditReceiptComponent implements OnInit {
 
   configInput(res: receiptDataResponse) {
     const receiptData = res;
-    this.editReceiptForm.get('receiptID')?.setValue(receiptData.id);
-    this.editReceiptForm.get('office')?.setValue(receiptData.escritorio_id);
-    this.editReceiptForm.get('startDate')?.setValue(receiptData.inicio);
-    this.editReceiptForm.get('receiptDate')?.setValue(receiptData.fim);
-    this.editReceiptForm.get('value')?.setValue(receiptData.valor);
+    this.editReceiptForm.get('receiptId')?.setValue(receiptData.id);
+    this.editReceiptForm.get('officeId')?.setValue(receiptData.officeid);
+    this.editReceiptForm.get('startDate')?.setValue(receiptData.startdate);
+    this.editReceiptForm.get('receiptDate')?.setValue(receiptData.enddate);
+    this.editReceiptForm.get('value')?.setValue(receiptData.value);
     this.editReceiptForm.get('status')?.setValue(receiptData.status);
     this.editReceiptForm
-      .get('typePayment')
-      ?.setValue(receiptData.method_payment);
+      .get('methodPayment')
+      ?.setValue(receiptData.methodpayment);
   }
 
   confirm(req: editReceiptRequest) {
-    req.receiptID = this.receiptID;
+    req.receiptId = this.receiptID;
     this.receiptService.editReceipt(req).subscribe({
       next: (res) => {
         this.serviceGetReceiptData();

@@ -1,10 +1,11 @@
 export interface receiptDataResponse {
-  escritorio_id: number;
-  instituicao_id: number;
   id: number;
-  inicio: number;
-  fim: number;
-  valor: string;
+  startdate: string;
+  enddate: string;
+  payername: string;
   status: string;
-  method_payment: string;
+  officeid: number;
+  institutionid: number;
+  value: string;
+  methodpayment: string;
 }

@@ -1,5 +1,5 @@
 export interface editOfficeRequest {
-  responsible?: string;
+  responsable?: string;
   document?: number;
   address?: string;
   zipCode?: number;

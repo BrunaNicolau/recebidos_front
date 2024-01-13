@@ -1,6 +1,6 @@
 export interface editReceiptRequest {
   //TODO: mudar os dados daq 
-  receiptID?: number;
+  receiptId?: number;
   issueDate?: string;
   paymentDate?: number;
   office: string;

@@ -33,15 +33,15 @@ export class NewReceiptComponent {
 
   initForm() {
     this.newReceiptForm = this.fb.group({
-      institution: [{ value: '1', disabled: true }],
-      office: [''],
+      institutionId: [{ value: '1', disabled: true }],
+      officeId: [''],
       value: [''],
       paymentMethod: [''],
     });
   }
 
   getOfficeService(id: any) {
-    this.officeService.getOffice(id).subscribe({
+    this.officeService.officeById(id).subscribe({
       next: (res) => {
         this.listOffices = [res];
       },
@@ -53,7 +53,7 @@ export class NewReceiptComponent {
 
   listOfficeService() {
     this.officeService
-      .ListOffices(sessionStorage.getItem('institutionID'))
+      .officesList(sessionStorage.getItem('institutionID'))
       .subscribe({
         next: (res) => {
           this.listOffices = res;
@@ -65,8 +65,8 @@ export class NewReceiptComponent {
   }
 
   confirm(req: any) {
-    req.institution = '1';
-    this.receiptService.createReceipt(req).subscribe({
+    req.institutionId = sessionStorage.getItem('institutionID');
+    this.receiptService.newReceipt(req).subscribe({
       next: (res) => {
         if (res) {
           this.snackBar.open(res, '', { duration: 5000 });
@@ -87,8 +87,7 @@ export class NewReceiptComponent {
     this.receiptService.emmitReceipt(req).subscribe({
       next: (res) => {
         if (res instanceof Blob) {
-          //TODO: deixar o nome do arquivo dinamico
-          saveAs(res, 'Receipt.pdf');
+          saveAs(res, `Receipt-${req}.pdf`);
           this.snackBar.open('Receipt downloaded successfully', '', {
             duration: 5000,
           });

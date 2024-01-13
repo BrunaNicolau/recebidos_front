@@ -31,7 +31,7 @@ export class EditOfficeComponent implements OnInit {
   initForm() {
     this.editOfficeForm = this.fb.group({
       id: [{ value: '', disabled: true }],
-      responsible: ['', [Validators.required]],
+      responsable: ['', [Validators.required]],
       address: [''],
       zipCode: ['', [Validators.required]],
       telephone: ['', [Validators.required]],
@@ -45,7 +45,7 @@ export class EditOfficeComponent implements OnInit {
 
   serviceGetOfficeData() {
     const req = this.officeDTO.getReceiptID();
-    this.officeService.getOffice(req).subscribe({
+    this.officeService.officeById(req).subscribe({
       next: (res) => {
         this.officeRes = res;
         this.configInput();
@@ -59,18 +59,18 @@ export class EditOfficeComponent implements OnInit {
   configInput() {
     this.editOfficeForm.get('id')?.setValue(this.officeRes.id);
     this.editOfficeForm
-      .get('responsible')
-      ?.setValue(this.officeRes.responsavel);
-    this.editOfficeForm.get('telephone')?.setValue(this.officeRes.telefone);
-    this.editOfficeForm.get('address')?.setValue(this.officeRes.endereco);
-    this.editOfficeForm.get('zipCode')?.setValue(this.officeRes.cep);
+      .get('responsable')
+      ?.setValue(this.officeRes.responsable);
+    this.editOfficeForm.get('telephone')?.setValue(this.officeRes.telephone);
+    this.editOfficeForm.get('address')?.setValue(this.officeRes.address);
+    this.editOfficeForm.get('zipCode')?.setValue(this.officeRes.zipcode);
     this.editOfficeForm.get('email')?.setValue(this.officeRes.email);
-    this.editOfficeForm.get('document')?.setValue(this.officeRes.documento);
+    this.editOfficeForm.get('document')?.setValue(this.officeRes.document);
     this.editOfficeForm.get('status')?.setValue(this.officeRes.status);
     if (this.editOfficeForm.get('status')?.value == 'inativo')
       this.editOfficeForm.get('status')?.disable();
-    this.editOfficeForm.get('startDate')?.setValue(this.officeRes.inicio);
-    this.editOfficeForm.get('endDate')?.setValue(this.officeRes.fim);
+    this.editOfficeForm.get('startDate')?.setValue(this.officeRes.startdate);
+    this.editOfficeForm.get('endDate')?.setValue(this.officeRes.enddate);
   }
 
   checkStatus(t: string) {
@@ -84,7 +84,7 @@ export class EditOfficeComponent implements OnInit {
   createEditReq(form: any) {
     const formData = form;
     const reqEdit: editOfficeRequest = {};
-    reqEdit.responsible = formData.responsible || '';
+    reqEdit.responsable = formData.responsable || '';
     reqEdit.document = formData.document || 0;
     reqEdit.address = formData.address || '';
     reqEdit.zipCode = formData.zipCode || 0;
