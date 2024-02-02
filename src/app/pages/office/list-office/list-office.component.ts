@@ -35,7 +35,7 @@ export class ListOfficesComponent implements OnInit {
     this.OfficeServices.officesList(req).subscribe({
       next: (res) => {
         if (!res) {
-          this.snackBar.open('Erro ao listar sscritórios.', '', {
+          this.snackBar.open('Erro ao listar escritórios.', '', {
             duration: 5000,
           });
         } else {
@@ -43,8 +43,8 @@ export class ListOfficesComponent implements OnInit {
           this.dataTable.paginator = this.paginator;
         }
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', {
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', {
           duration: 5000,
         });
       },

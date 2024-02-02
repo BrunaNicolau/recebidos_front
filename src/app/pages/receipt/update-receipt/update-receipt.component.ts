@@ -35,8 +35,8 @@ export class UpdateReceiptComponent {
         next: (res) => {
           this.fillInput(res);
         },
-        error: (error) => {
-          this.snackBar.open(error.error.message, '', { duration: 5000 });
+        error: (e) => {
+          this.snackBar.open(e.error.message, '', { duration: 5000 });
           this.cleanFields();
         },
       });
@@ -99,8 +99,8 @@ export class UpdateReceiptComponent {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
         this.cleanFields();
       },
-      error: (error) => {
-        this.snackBar.open(error.error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }

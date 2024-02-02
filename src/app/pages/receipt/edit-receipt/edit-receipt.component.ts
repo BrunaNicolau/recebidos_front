@@ -56,8 +56,8 @@ export class EditReceiptComponent implements OnInit {
         this.configInput(res);
         this.listOfficeService();
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }
@@ -69,8 +69,8 @@ export class EditReceiptComponent implements OnInit {
         next: (res) => {
           this.listOffices = res;
         },
-        error: (error) => {
-          this.snackBar.open(error.message, '', { duration: 5000 });
+        error: (e) => {
+          this.snackBar.open(e.error.message, '', { duration: 5000 });
         },
       });
   }
@@ -95,8 +95,8 @@ export class EditReceiptComponent implements OnInit {
         this.serviceGetReceiptData();
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
       },
-      error: (error) => {
-        this.snackBar.open(error.error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }

@@ -45,8 +45,8 @@ export class NewReceiptComponent {
       next: (res) => {
         this.listOffices = [res];
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }
@@ -58,8 +58,8 @@ export class NewReceiptComponent {
         next: (res) => {
           this.listOffices = res;
         },
-        error: (error) => {
-          this.snackBar.open(error.message, '', { duration: 5000 });
+        error: (e) => {
+          this.snackBar.open(e.error.message, '', { duration: 5000 });
         },
       });
   }
@@ -77,8 +77,8 @@ export class NewReceiptComponent {
           });
         }
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }
@@ -97,8 +97,8 @@ export class NewReceiptComponent {
           });
         }
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }

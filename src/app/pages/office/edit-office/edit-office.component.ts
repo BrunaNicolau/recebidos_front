@@ -14,7 +14,7 @@ import { ComunsData } from 'src/app/shared/utils/ComunsData';
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;
   officeRes: officeDataResponse;
-  pageHeader: string = "Editar de Escritorios";
+  pageHeader: string = 'Editar de Escritorios';
 
   constructor(
     private fb: FormBuilder,
@@ -50,8 +50,8 @@ export class EditOfficeComponent implements OnInit {
         this.officeRes = res;
         this.configInput();
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }
@@ -105,18 +105,8 @@ export class EditOfficeComponent implements OnInit {
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
       },
-      error: (error) => {
-        //TODO: melhorar isso no back
-        if (
-          error.error &&
-          Array.isArray(error.error.error) &&
-          error.error.error.length > 0
-        ) {
-          const errorMessage = error.error.error[0];
-          this.snackBar.open(errorMessage, '', { duration: 5000 });
-        } else {
-          this.snackBar.open('An error occurred', '', { duration: 5000 });
-        }
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }

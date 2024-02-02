@@ -35,8 +35,8 @@ export class ListReceiptsComponent implements OnInit {
         this.dataTable = new MatTableDataSource<TableReceitModel>(res);
         this.dataTable.paginator = this.paginator;
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', {
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', {
           duration: 5000,
         });
       },

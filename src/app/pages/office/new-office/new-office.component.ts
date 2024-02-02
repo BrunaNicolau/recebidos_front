@@ -13,7 +13,7 @@ import { newOfficeRequest } from 'src/app/shared/request/newOfficeRequest';
 export class NewOfficeComponent implements OnInit {
   newOfficeForm: FormGroup;
   date = new Date();
-  pageHeader: string = "Cadastro de Escritorios";
+  pageHeader: string = 'Cadastro de Escritorios';
 
   constructor(
     private router: Router,
@@ -46,8 +46,8 @@ export class NewOfficeComponent implements OnInit {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
         this.router.navigate(['office']);
       },
-      error: (error) => {
-        this.snackBar.open(error.message, '', { duration: 5000 });
+      error: (e) => {
+        this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
     });
   }
