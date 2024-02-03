@@ -11,11 +11,13 @@
   align-items: center;
   justify-content: center;
   width: 20%;
-  background: #FFF;
+  background: #fff;
 }
 
 .alignCenter {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 mat-list-item:hover {
@@ -27,4 +29,14 @@ mat-list-item:hover {
   position: absolute;
   top: 90%;
   width: 100%;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  color: #fff;
+  text-align: center;
+  line-height: 100px;
 }

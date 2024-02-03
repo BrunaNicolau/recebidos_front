@@ -28,7 +28,7 @@ export class NewOfficeComponent implements OnInit {
 
   initForm() {
     this.newOfficeForm = this.fb.group({
-      responsible: ['', [Validators.required]],
+      responsable: ['', [Validators.required]],
       address: [''],
       zipCode: ['', [Validators.required]],
       telephone: ['', [Validators.required]],

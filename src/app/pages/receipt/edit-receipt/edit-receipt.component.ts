@@ -77,10 +77,16 @@ export class EditReceiptComponent implements OnInit {
 
   configInput(res: receiptDataResponse) {
     const receiptData = res;
+    //TODO: bug datas divergente
+    const startDate = receiptData.startdate
+      ? new Date(receiptData.startdate)
+      : null;
+    const endDate = receiptData.enddate ? new Date(receiptData.enddate) : null;
+
     this.editReceiptForm.get('receiptId')?.setValue(receiptData.id);
     this.editReceiptForm.get('officeId')?.setValue(receiptData.officeid);
-    this.editReceiptForm.get('startDate')?.setValue(receiptData.startdate);
-    this.editReceiptForm.get('receiptDate')?.setValue(receiptData.enddate);
+    this.editReceiptForm.get('startDate')?.setValue(startDate);
+    this.editReceiptForm.get('receiptDate')?.setValue(endDate);
     this.editReceiptForm.get('value')?.setValue(receiptData.value);
     this.editReceiptForm.get('status')?.setValue(receiptData.status);
     this.editReceiptForm

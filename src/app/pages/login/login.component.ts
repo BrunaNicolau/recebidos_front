@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
   logar(req: any) {
     this.authService.login(req).subscribe({
       next: (res) => {
-        sessionStorage.setItem('userLevel', res.user.profile);
-        sessionStorage.setItem('institutionID', res.user.institution);
-        sessionStorage.setItem('officeID', res.user.officeid);
+        sessionStorage.setItem('userLevel', res.profile);
+        sessionStorage.setItem('institutionID', res.institution);
+        sessionStorage.setItem('officeID', res.officeid);
         this.router.navigate(['/home']);
       },
       error: () => {

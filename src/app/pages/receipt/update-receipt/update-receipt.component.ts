@@ -33,7 +33,12 @@ export class UpdateReceiptComponent {
     if (event.target.value) {
       this.receiptService.receiptById(event.target.value).subscribe({
         next: (res) => {
-          this.fillInput(res);
+          if (res) {
+            this.fillInput(res);
+          } else {
+            this.snackBar.open('Recibo não existe', '', { duration: 5000 });
+            this.cleanFields();
+          }
         },
         error: (e) => {
           this.snackBar.open(e.error.message, '', { duration: 5000 });

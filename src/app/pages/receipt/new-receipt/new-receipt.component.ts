@@ -69,7 +69,7 @@ export class NewReceiptComponent {
     this.receiptService.newReceipt(req).subscribe({
       next: (res) => {
         if (res) {
-          this.snackBar.open(res, '', { duration: 5000 });
+          this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
           this.generatePDF(res.id);
         } else {
           this.snackBar.open('Unexpected response from the server', '', {
