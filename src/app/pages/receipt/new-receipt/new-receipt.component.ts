@@ -14,6 +14,7 @@ export class NewReceiptComponent {
   pageHeader: string = 'Novo Recibo';
   officeID = sessionStorage.getItem('officeID');
   listOffices: any;
+  methodPaymentSelect: any[];
 
   constructor(
     private fb: FormBuilder,
@@ -24,6 +25,7 @@ export class NewReceiptComponent {
 
   ngOnInit() {
     this.initForm();
+    this.initSelect();
     if (this.officeID != 'null') {
       this.getOfficeService(this.officeID);
     } else {
@@ -36,8 +38,18 @@ export class NewReceiptComponent {
       institutionId: [{ value: '1', disabled: true }],
       officeId: [''],
       value: [''],
-      paymentMethod: [''],
+      methodPayment: [''],
     });
+  }
+
+  initSelect(){
+    this.methodPaymentSelect = [
+      { value: 'C', label: 'Cartão' },
+      { value: 'D', label: 'Dinheiro' },
+      { value: 'T', label: 'Transferência' },
+      { value: 'P', label: 'Pix' },
+      { value: 'O', label: 'Outros' }
+    ];
   }
 
   getOfficeService(id: any) {
@@ -91,6 +103,7 @@ export class NewReceiptComponent {
           this.snackBar.open('Receipt downloaded successfully', '', {
             duration: 5000,
           });
+          this.clearform();
         } else {
           this.snackBar.open('Unexpected response from the server', '', {
             duration: 5000,
@@ -100,6 +113,14 @@ export class NewReceiptComponent {
       error: (e) => {
         this.snackBar.open(e.error.message, '', { duration: 5000 });
       },
+    });
+  }
+
+  clearform(){
+    this.newReceiptForm.patchValue({
+      officeId: [''],
+      value: [''],
+      methodPayment: [''],
     });
   }
 

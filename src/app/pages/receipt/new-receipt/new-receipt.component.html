@@ -31,13 +31,13 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Metodo de Pagamento</mat-label>
-          <!-- TODO: Montar um enum -->
-          <mat-select formControlName="paymentMethod">
-            <mat-option value="C">Cartão</mat-option>
-            <mat-option value="D">Dinheiro</mat-option>
-            <mat-option value="T">Transferencia</mat-option>
-            <mat-option value="P">Pix</mat-option>
-            <mat-option value="O">Outros</mat-option>
+          <mat-select formControlName="methodPayment">
+            <mat-option
+              *ngFor="let option of methodPaymentSelect"
+              [value]="option.value"
+            >
+              {{ option.label }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </p>
