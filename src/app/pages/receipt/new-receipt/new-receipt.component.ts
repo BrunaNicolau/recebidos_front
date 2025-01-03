@@ -5,9 +5,10 @@ import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { saveAs } from 'file-saver';
 import { OfficeServices } from 'src/app/service/office.service';
 @Component({
-  selector: 'app-new-receipt',
-  templateUrl: './new-receipt.component.html',
-  styleUrls: ['./new-receipt.component.scss'],
+    selector: 'app-new-receipt',
+    templateUrl: './new-receipt.component.html',
+    styleUrls: ['./new-receipt.component.scss'],
+    standalone: false
 })
 export class NewReceiptComponent {
   newReceiptForm: FormGroup;

@@ -8,9 +8,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
-  selector: 'app-list-office',
-  templateUrl: './list-office.component.html',
-  styleUrls: ['./list-office.component.scss'],
+    selector: 'app-list-office',
+    templateUrl: './list-office.component.html',
+    styleUrls: ['./list-office.component.scss'],
+    standalone: false
 })
 export class ListOfficesComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'status', 'acao'];

@@ -7,9 +7,10 @@ import { officeDataResponse } from 'src/app/shared/response/officeDataResponse';
 import { ComunsData } from 'src/app/shared/utils/ComunsData';
 
 @Component({
-  selector: 'app-edit-office',
-  templateUrl: './edit-office.component.html',
-  styleUrls: ['./edit-office.component.scss'],
+    selector: 'app-edit-office',
+    templateUrl: './edit-office.component.html',
+    styleUrls: ['./edit-office.component.scss'],
+    standalone: false
 })
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;

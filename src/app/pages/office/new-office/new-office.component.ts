@@ -6,9 +6,10 @@ import { OfficeServices } from 'src/app/service/office.service';
 import { newOfficeRequest } from 'src/app/shared/request/newOfficeRequest';
 
 @Component({
-  selector: 'app-new-office',
-  templateUrl: './new-office.component.html',
-  styleUrls: ['./new-office.component.scss'],
+    selector: 'app-new-office',
+    templateUrl: './new-office.component.html',
+    styleUrls: ['./new-office.component.scss'],
+    standalone: false
 })
 export class NewOfficeComponent implements OnInit {
   newOfficeForm: FormGroup;

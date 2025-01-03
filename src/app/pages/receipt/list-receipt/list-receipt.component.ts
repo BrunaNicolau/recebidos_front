@@ -7,9 +7,10 @@ import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-list-receipt',
-  templateUrl: './list-receipt.component.html',
-  styleUrls: ['./list-receipt.component.scss'],
+    selector: 'app-list-receipt',
+    templateUrl: './list-receipt.component.html',
+    styleUrls: ['./list-receipt.component.scss'],
+    standalone: false
 })
 export class ListReceiptsComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'valor', 'status', 'acao'];

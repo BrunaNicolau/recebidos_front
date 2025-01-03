@@ -4,9 +4,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 
 @Component({
-  selector: 'app-update-receipt',
-  templateUrl: './update-receipt.component.html',
-  styleUrls: ['./update-receipt.component.scss'],
+    selector: 'app-update-receipt',
+    templateUrl: './update-receipt.component.html',
+    styleUrls: ['./update-receipt.component.scss'],
+    standalone: false
 })
 export class UpdateReceiptComponent {
   updateReceiptForm: FormGroup;

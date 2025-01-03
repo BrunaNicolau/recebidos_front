@@ -8,9 +8,10 @@ import { editReceiptRequest } from 'src/app/shared/request/editReceiptRequest';
 import { receiptDataResponse } from 'src/app/shared/response/receiptDataResponse';
 
 @Component({
-  selector: 'app-edit-receipt',
-  templateUrl: './edit-receipt.component.html',
-  styleUrls: ['./edit-receipt.component.scss'],
+    selector: 'app-edit-receipt',
+    templateUrl: './edit-receipt.component.html',
+    styleUrls: ['./edit-receipt.component.scss'],
+    standalone: false
 })
 export class EditReceiptComponent implements OnInit {
   editReceiptForm: FormGroup;
