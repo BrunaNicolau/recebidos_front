@@ -3,15 +3,20 @@ import { Router } from '@angular/router';
 import { OfficeServices } from 'src/app/service/office.service';
 import { TableOfficeModel } from 'src/app/shared/interface/table-office.model';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ComunsData } from 'src/app/shared/utils/ComunsData';
+import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatMiniFabButton, MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-list-office',
     templateUrl: './list-office.component.html',
     styleUrls: ['./list-office.component.scss'],
-    standalone: false
+    imports: [ToolbarComponent, MatFormField, MatLabel, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatMiniFabButton, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator, MatButton]
 })
 export class ListOfficesComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'status', 'acao'];

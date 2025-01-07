@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
+import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-update-receipt',
     templateUrl: './update-receipt.component.html',
     styleUrls: ['./update-receipt.component.scss'],
-    standalone: false
+    imports: [ToolbarComponent, ReactiveFormsModule, MatGridList, MatGridTile, MatFormField, MatLabel, MatInput, MatIcon, MatSuffix, MatSelect, MatOption, MatDatepickerInput, MatDatepickerToggle, MatDatepicker, MatButton]
 })
 export class UpdateReceiptComponent {
   updateReceiptForm: FormGroup;

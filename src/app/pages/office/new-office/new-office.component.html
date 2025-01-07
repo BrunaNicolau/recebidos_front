@@ -4,18 +4,19 @@
   [formGroup]="newOfficeForm"
   (ngSubmit)="confirm(newOfficeForm.value)"
   class="form-container"
->
+  >
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
         <mat-form-field appearance="fill">
           <mat-label>Responsavel</mat-label>
           <input matInput formControlName="responsable" />
-          <mat-error
-            *ngIf="newOfficeForm.controls['responsable'].hasError('required')"
-          >
-            O responsavel é obrigatório
-          </mat-error>
+          @if (newOfficeForm.controls['responsable'].hasError('required')) {
+            <mat-error
+              >
+              O responsavel é obrigatório
+            </mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Endereco</mat-label>
@@ -28,20 +29,22 @@
             formControlName="zipCode"
             maxlength="9"
             mask="00000-000"
-          />
-          <mat-error
-            *ngIf="newOfficeForm.controls['zipCode'].hasError('required')"
-          >
-            O CEP é obrigatório
-          </mat-error>
-          <mat-error
-            *ngIf="
-              newOfficeForm.controls['zipCode'].value.length < 9 &&
-              !newOfficeForm.controls['zipCode'].hasError('required')
-            "
-          >
-            Por favor insira um CEP válido
-          </mat-error>
+            />
+          @if (newOfficeForm.controls['zipCode'].hasError('required')) {
+            <mat-error
+              >
+              O CEP é obrigatório
+            </mat-error>
+          }
+          @if (
+            newOfficeForm.controls['zipCode'].value.length < 9 &&
+            !newOfficeForm.controls['zipCode'].hasError('required')
+            ) {
+            <mat-error
+              >
+              Por favor insira um CEP válido
+            </mat-error>
+          }
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -55,37 +58,41 @@
             formControlName="telephone"
             mask="(00) 0000-0000 || (00) 00000-0000"
             maxlength="16"
-          />
-          <mat-error
-            *ngIf="newOfficeForm.controls['telephone'].hasError('required')"
-          >
-            O telefone é obrigatório
-          </mat-error>
-          <mat-error
-            *ngIf="
-              newOfficeForm.controls['telephone'].value.length < 13 &&
-              !newOfficeForm.controls['telephone'].hasError('required')
-            "
-          >
-            Por favor insira um Telefone válido
-          </mat-error>
+            />
+          @if (newOfficeForm.controls['telephone'].hasError('required')) {
+            <mat-error
+              >
+              O telefone é obrigatório
+            </mat-error>
+          }
+          @if (
+            newOfficeForm.controls['telephone'].value.length < 13 &&
+            !newOfficeForm.controls['telephone'].hasError('required')
+            ) {
+            <mat-error
+              >
+              Por favor insira um Telefone válido
+            </mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>E-mail</mat-label>
           <input type="email" matInput formControlName="email" />
-          <mat-error
-            *ngIf="
-              newOfficeForm.controls['email'].hasError('email') &&
-              !newOfficeForm.controls['email'].hasError('required')
-            "
-          >
-            Por favor insira um endereço de e-mail válido
-          </mat-error>
-          <mat-error
-            *ngIf="newOfficeForm.controls['email'].hasError('required')"
-          >
-            O e-mail é obrigatório
-          </mat-error>
+          @if (
+            newOfficeForm.controls['email'].hasError('email') &&
+            !newOfficeForm.controls['email'].hasError('required')
+            ) {
+            <mat-error
+              >
+              Por favor insira um endereço de e-mail válido
+            </mat-error>
+          }
+          @if (newOfficeForm.controls['email'].hasError('required')) {
+            <mat-error
+              >
+              O e-mail é obrigatório
+            </mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Documento(CPF/CNPJ)</mat-label>
@@ -94,20 +101,22 @@
             formControlName="document"
             maxlength="20"
             mask="000.000.000-00 || 000.000.000/0000-00"
-          />
-          <mat-error
-            *ngIf="newOfficeForm.controls['document'].hasError('required')"
-          >
-            O documento é obrigatório
-          </mat-error>
-          <mat-error
-            *ngIf="
-              newOfficeForm.controls['document'].value.length < 14 &&
-              !newOfficeForm.controls['document'].hasError('required')
-            "
-          >
-            Por favor insira um documento válido
-          </mat-error>
+            />
+          @if (newOfficeForm.controls['document'].hasError('required')) {
+            <mat-error
+              >
+              O documento é obrigatório
+            </mat-error>
+          }
+          @if (
+            newOfficeForm.controls['document'].value.length < 14 &&
+            !newOfficeForm.controls['document'].hasError('required')
+            ) {
+            <mat-error
+              >
+              Por favor insira um documento válido
+            </mat-error>
+          }
         </mat-form-field>
       </p>
     </mat-grid-tile>
@@ -120,7 +129,7 @@
             matInput
             [matDatepicker]="pickerStartDate"
             formControlName="startDate"
-          />
+            />
           <mat-datepicker-toggle
             matIconSuffix
             [for]="pickerStartDate"
@@ -139,7 +148,7 @@
       color="primary"
       type="submit"
       [disabled]="!newOfficeForm.valid"
-    >
+      >
       Confirmar
     </button>
   </div>

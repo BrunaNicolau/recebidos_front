@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { OfficeServices } from 'src/app/service/office.service';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { editReceiptRequest } from 'src/app/shared/request/editReceiptRequest';
 import { receiptDataResponse } from 'src/app/shared/response/receiptDataResponse';
+import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+
+import { MatOption } from '@angular/material/core';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-edit-receipt',
     templateUrl: './edit-receipt.component.html',
     styleUrls: ['./edit-receipt.component.scss'],
-    standalone: false
+    imports: [ToolbarComponent, ReactiveFormsModule, MatGridList, MatGridTile, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatButton]
 })
 export class EditReceiptComponent implements OnInit {
   editReceiptForm: FormGroup;

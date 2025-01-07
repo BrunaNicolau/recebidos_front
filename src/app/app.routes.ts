@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home.component';
 import { AuthGuard } from './service/auth.guard';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'home',
@@ -17,18 +16,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { userLevel: 1 },
     loadChildren: () =>
-      import('./pages/office/office.module').then((m) => m.OfficeModule),
+      import('./pages/office/office.routes').then((m) => m.OFFICE_ROUTES),
   },
   {
     path: 'receipt',
     loadChildren: () =>
-      import('./pages/receipt/receipt.module').then((m) => m.ReceiptModule),
+      import('./pages/receipt/receipt.routes').then((m) => m.RECEIPT_ROUTES),
   },
   { path: '**', component: ErrorPageComponent },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

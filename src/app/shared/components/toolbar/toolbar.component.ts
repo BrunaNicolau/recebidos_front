@@ -2,12 +2,15 @@ import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-toolbar',
     templateUrl: './toolbar.component.html',
     styleUrls: ['./toolbar.component.sass'],
-    standalone: false
+    imports: [MatToolbar, MatIconButton, MatIcon]
 })
 export class ToolbarComponent {
   @Input() pageTitle: string;

@@ -1,16 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { TableReceitModel } from 'src/app/shared/interface/table-receipt.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatMiniFabButton, MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-list-receipt',
     templateUrl: './list-receipt.component.html',
     styleUrls: ['./list-receipt.component.scss'],
-    standalone: false
+    imports: [ToolbarComponent, MatFormField, MatLabel, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatMiniFabButton, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator, MatButton]
 })
 export class ListReceiptsComponent implements OnInit {
   displayedColumns = ['id', 'responsavel', 'valor', 'status', 'acao'];

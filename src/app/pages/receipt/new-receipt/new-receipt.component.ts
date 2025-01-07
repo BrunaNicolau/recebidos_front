@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReceiptServiceService } from 'src/app/service/receipt.service';
 import { saveAs } from 'file-saver';
 import { OfficeServices } from 'src/app/service/office.service';
+import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 @Component({
     selector: 'app-new-receipt',
     templateUrl: './new-receipt.component.html',
     styleUrls: ['./new-receipt.component.scss'],
-    standalone: false
+    imports: [ToolbarComponent, ReactiveFormsModule, MatGridList, MatGridTile, MatFormField, MatLabel, MatSelect, MatOption, MatInput, MatButton]
 })
 export class NewReceiptComponent {
   newReceiptForm: FormGroup;

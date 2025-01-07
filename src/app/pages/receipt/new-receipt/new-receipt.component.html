@@ -3,7 +3,7 @@
   [formGroup]="newReceiptForm"
   (ngSubmit)="confirm(newReceiptForm.value)"
   class="form-container"
->
+  >
   <mat-grid-list cols="1" rowHeight="100px" class="alingForm">
     <mat-grid-tile>
       <p class="alingLine">
@@ -16,9 +16,11 @@
         <mat-form-field appearance="fill">
           <mat-label>Escritorio</mat-label>
           <mat-select formControlName="officeId">
-            <mat-option *ngFor="let office of listOffices" [value]="office.id">
-              {{ office.responsable }}
-            </mat-option>
+            @for (office of listOffices; track office) {
+              <mat-option [value]="office.id">
+                {{ office.responsable }}
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </p>
@@ -32,12 +34,13 @@
         <mat-form-field>
           <mat-label>Metodo de Pagamento</mat-label>
           <mat-select formControlName="methodPayment">
-            <mat-option
-              *ngFor="let option of methodPaymentSelect"
-              [value]="option.value"
-            >
-              {{ option.label }}
-            </mat-option>
+            @for (option of methodPaymentSelect; track option) {
+              <mat-option
+                [value]="option.value"
+                >
+                {{ option.label }}
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </p>
