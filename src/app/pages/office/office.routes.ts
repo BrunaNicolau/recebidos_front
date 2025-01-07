@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
-import { ListOfficesComponent } from './list-office/list-office.component';
-import { NewOfficeComponent } from './new-office/new-office.component';
-import { EditOfficeComponent } from './edit-office/edit-office.component';
+
+
+
 
 export const OFFICE_ROUTES: Route[] = [
-  { path: '', component: ListOfficesComponent },
-  { path: 'new', component: NewOfficeComponent },
-  { path: 'edit', component: EditOfficeComponent },
+  { path: '', loadComponent: () => import('./list-office/list-office.component').then(m => m.ListOfficesComponent) },
+  { path: 'new', loadComponent: () => import('./new-office/new-office.component').then(m => m.NewOfficeComponent) },
+  { path: 'edit', loadComponent: () => import('./edit-office/edit-office.component').then(m => m.EditOfficeComponent) },
 ];

@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home.component';
+
+
 import { AuthGuard } from './service/auth.guard';
-import { ErrorPageComponent } from './pages/error-page/error-page.component';
+
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', loadComponent: () => import('./pages/login/login.component').then(m => m.LoginComponent) },
   {
     path: 'home',
     canActivate: [AuthGuard],
-    component: HomeComponent,
+    loadComponent: () => import('./pages/home.component').then(m => m.HomeComponent),
   },
   {
     path: 'office',
@@ -23,5 +23,5 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/receipt/receipt.routes').then((m) => m.RECEIPT_ROUTES),
   },
-  { path: '**', component: ErrorPageComponent },
+  { path: '**', loadComponent: () => import('./pages/error-page/error-page.component').then(m => m.ErrorPageComponent) },
 ];
