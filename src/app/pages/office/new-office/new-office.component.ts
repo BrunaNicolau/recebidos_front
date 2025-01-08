@@ -1,23 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OfficeServices } from 'src/app/service/office.service';
 import { newOfficeRequest } from 'src/app/shared/request/newOfficeRequest';
 import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { MatFormField, MatLabel, MatError, MatSuffix } from '@angular/material/form-field';
+import {
+  MatFormField,
+  MatLabel,
+  MatError,
+  MatSuffix,
+} from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
-import { NgxMaskModule } from 'ngx-mask';
-import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import {
+  MatDatepickerInput,
+  MatDatepickerToggle,
+  MatDatepicker,
+} from '@angular/material/datepicker';
 import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'app-new-office',
-    templateUrl: './new-office.component.html',
-    styleUrls: ['./new-office.component.scss'],
-    imports: [ToolbarComponent, ReactiveFormsModule, MatGridList, MatGridTile, MatFormField, MatLabel, MatInput, MatError, NgxMaskModule, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatButton]
+  selector: 'app-new-office',
+  templateUrl: './new-office.component.html',
+  styleUrls: ['./new-office.component.scss'],
+  imports: [
+    ToolbarComponent,
+    ReactiveFormsModule,
+    MatGridList,
+    MatGridTile,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatError,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatSuffix,
+    MatDatepicker,
+    MatButton,
+  ],
 })
 export class NewOfficeComponent implements OnInit {
   newOfficeForm: FormGroup;

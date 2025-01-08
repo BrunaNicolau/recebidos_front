@@ -1,26 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { MatInput } from '@angular/material/input';
+
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import {
+  MatDatepickerInput,
+  MatDatepickerToggle,
+  MatDatepicker,
+} from '@angular/material/datepicker';
+import { MatButton } from '@angular/material/button';
+import { Router } from '@angular/router';
+import {
+  MatFormField,
+  MatLabel,
+  MatError,
+  MatSuffix,
+} from '@angular/material/form-field';
+
 import { OfficeServices } from 'src/app/service/office.service';
 import { editOfficeRequest } from 'src/app/shared/request/editOfficeRequest';
 import { officeDataResponse } from 'src/app/shared/response/officeDataResponse';
 import { ComunsData } from 'src/app/shared/utils/ComunsData';
 import { ToolbarComponent } from '../../../shared/components/toolbar/toolbar.component';
-import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-import { MatFormField, MatLabel, MatError, MatSuffix } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-
-import { NgxMaskModule } from 'ngx-mask';
-import { MatSelect } from '@angular/material/select';
-import { MatOption } from '@angular/material/core';
-import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
-import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'app-edit-office',
-    templateUrl: './edit-office.component.html',
-    styleUrls: ['./edit-office.component.scss'],
-    imports: [ToolbarComponent, ReactiveFormsModule, MatGridList, MatGridTile, MatFormField, MatLabel, MatInput, MatError, NgxMaskModule, MatSelect, MatOption, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatButton]
+  selector: 'app-edit-office',
+  templateUrl: './edit-office.component.html',
+  styleUrls: ['./edit-office.component.scss'],
+  imports: [
+    ToolbarComponent,
+    ReactiveFormsModule,
+    MatGridList,
+    MatGridTile,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    MatError,
+    MatSelect,
+    MatOption,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatSuffix,
+    MatDatepicker,
+    MatButton
+  ],
 })
 export class EditOfficeComponent implements OnInit {
   editOfficeForm: FormGroup;
@@ -31,7 +62,8 @@ export class EditOfficeComponent implements OnInit {
     private fb: FormBuilder,
     private officeService: OfficeServices,
     private snackBar: MatSnackBar,
-    private officeDTO: ComunsData
+    private officeDTO: ComunsData,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -115,6 +147,7 @@ export class EditOfficeComponent implements OnInit {
     this.officeService.editOffice(req).subscribe({
       next: (res) => {
         this.snackBar.open(res.txt + res.id, '', { duration: 5000 });
+        this.router.navigate(['/office'])
       },
       error: (e) => {
         this.snackBar.open(e.error.message, '', { duration: 5000 });

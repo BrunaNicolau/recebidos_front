@@ -12,14 +12,17 @@ import { importProvidersFrom } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app/app.routes';
 import { appConfig } from './app/app.config';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { MatNativeDateModule } from '@angular/material/core';
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
-    importProvidersFrom(BrowserModule),
+    importProvidersFrom(BrowserModule, MatNativeDateModule),
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
     provideAnimations(),
     provideRouter(routes, withComponentInputBinding()),
+    provideEnvironmentNgxMask()
   ],
 }).catch((err) => console.error(err));

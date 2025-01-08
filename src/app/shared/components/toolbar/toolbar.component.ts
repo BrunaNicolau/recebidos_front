@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
@@ -13,7 +13,7 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatToolbar, MatIconButton, MatIcon]
 })
 export class ToolbarComponent {
-  @Input() pageTitle: string;
+  readonly pageTitle = input<string>();
 
   constructor(
     private authService: AuthService,

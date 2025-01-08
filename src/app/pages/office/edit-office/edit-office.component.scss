@@ -4,7 +4,7 @@
   align-items: center;
   height: calc(
     100% - 160px
-  ); /* Subtracting height of toolbar and button container */
+  ); 
 }
 
 .alingForm {
@@ -21,30 +21,27 @@
 }
 
 .button-container {
-  position: absolute; /* Stick the button to the bottom */
+  position: absolute; 
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%); /* Center the button container */
+  transform: translateX(-50%); 
   width: 100%;
-  max-width: 75%; /* Same max-width as the form */
+  max-width: 75%;
   display: flex;
   justify-content: space-between;
-  padding: 5em; /* Adjust padding as per requirement */
+  padding: 5em; 
 }
 
-/* Default styling for larger screens */
 mat-form-field {
-  width: 300px;
+  width: 250px;
 }
 
-/* Adjust width for medium-sized screens */
 @media screen and (max-width: 768px) {
   mat-form-field {
     width: 185px;
   }
 }
 
-/* Adjust width for small-sized screens or mobile devices */
 @media screen and (max-width: 480px) {
   mat-form-field {
     width: 110px;
